@@ -11,10 +11,10 @@
         html, body { height: 100%; margin: 0; }
         body { color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; }
 
-        /* Fundo combinando com o do SMC */
+        /* FUNDO LOCAL: Usando o seu arquivo 7(Special).jpg */
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://cdn.discordapp.com/attachments/1372130398150201405/1466952035785248921/7Special.jpg') no-repeat center center;
+            background: url('7(Special).jpg') no-repeat center center;
             background-size: cover; z-index: -2;
         }
 
@@ -34,13 +34,15 @@
 
         header { text-align: center; margin-bottom: 60px; padding: 40px 0; }
         
-        /* Avatar dinâmico via Lanyard */
         .profile-wrapper { position: relative; display: inline-block; margin-bottom: 20px; }
+        
+        /* AVATAR LOCAL: Usando o arquivo ba33bb69a0fc7262ce0f7a15ee17a1e0~2.jpg */
         .director-avatar { 
             width: 150px; height: 150px; border-radius: 50%; 
             border: 3px solid var(--primary); 
             box-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
             background: #000;
+            object-fit: cover;
         }
 
         h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; background: linear-gradient(to bottom, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -2px; }
@@ -75,7 +77,7 @@
 
         <header>
             <div class="profile-wrapper">
-                <img src="https://lanyard.vencord.dev/api/971381693971824700?avatar=true" class="director-avatar" alt="Director Moon">
+                <img src="ba33bb69a0fc7262ce0f7a15ee17a1e0~2.jpg" class="director-avatar" alt="Director Moon">
             </div>
             <h1>DIRECTOR MOON</h1>
             <div class="id-badge">SOVEREIGN ID: 971381693971824700</div>
