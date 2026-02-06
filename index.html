@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Director's Archive | Portfolio</title>
+    <style>
+        :root {
+            --primary: #a855f7;
+            --bg: #0a0a0b;
+            --card: #16161a;
+            --text: #e4e4e7;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: var(--card);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.2);
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            margin-bottom: 1rem;
+            object-fit: cover;
+        }
+
+        h1 { color: var(--primary); margin: 0.5rem 0; letter-spacing: 2px; }
+        p { opacity: 0.8; line-height: 1.6; }
+
+        .info-box {
+            background: rgba(168, 85, 247, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .info-item { margin-bottom: 10px; font-size: 0.9rem; }
+        .label { font-weight: bold; color: var(--primary); }
+
+        .specialty {
+            display: inline-block;
+            background: var(--primary);
+            color: black;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        footer { font-size: 0.7rem; margin-top: 2rem; opacity: 0.5; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="https://static.wikia.nocookie.net/cookierunkingdom/images/d/d4/Shadow_Milk_Cookie_Full.png" alt="Director Moon" class="profile-img">
+    <h1>DIRECTOR MOON</h1>
+    <p><i>"The strings of the Archive are under my command."</i></p>
+
+    <div class="info-box">
+        <div class="info-item"><span class="label">Discord ID:</span> 971381693971824700</div>
+        <div class="info-item"><span class="label">Role:</span> Bot Architect & Archive Sovereign</div>
+        <div class="info-item"><span class="label">Project:</span> SMC (Shadow Milk Cookie Bot)</div>
+    </div>
+
+    <div class="specialty">MASTER OF PUPPET STRINGS (JS DEVELOPER)</div>
+    <div class="specialty">DARK AESTHETICS EXPERT</div>
+
+    <footer>The Director's Archive • No puppet remains without strings.</footer>
+</div>
+
+</body>
+</html>
