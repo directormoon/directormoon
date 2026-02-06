@@ -2,92 +2,113 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Director's Archive | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Director | Sovereign Archive</title>
     <style>
-        :root {
-            --primary: #a855f7;
-            --bg: #0a0a0b;
-            --card: #16161a;
-            --text: #e4e4e7;
+        :root { --primary: #a855f7; --accent: #6366f1; --glass: rgba(10, 10, 20, 0.94); --text: #f8fafc; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body { height: 100%; margin: 0; }
+        body { color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; }
+
+        /* Fundo combinando com o do SMC */
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://cdn.discordapp.com/attachments/1372130398150201405/1466952035785248921/7Special.jpg') no-repeat center center;
+            background-size: cover; z-index: -2;
         }
 
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+        body::after { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.80); z-index: -1; }
+
+        .container { max-width: 1200px; width: 100%; padding: 20px; flex: 1; margin: 0 auto; }
+
+        nav { 
+            display: flex; justify-content: center; gap: 20px; 
+            padding: 12px 15px; background: var(--glass); backdrop-filter: blur(25px); 
+            border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 50px; 
+            margin-bottom: 40px; position: sticky; top: 10px; z-index: 100;
         }
 
-        .container {
-            background: var(--card);
-            padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid var(--primary);
-            box-shadow: 0 0 30px rgba(168, 85, 247, 0.2);
-            max-width: 500px;
-            text-align: center;
+        nav a { color: var(--text); text-decoration: none; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; transition: 0.3s; }
+        nav a:hover { opacity: 1; color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+
+        header { text-align: center; margin-bottom: 60px; padding: 40px 0; }
+        
+        /* Avatar dinâmico via Lanyard */
+        .profile-wrapper { position: relative; display: inline-block; margin-bottom: 20px; }
+        .director-avatar { 
+            width: 150px; height: 150px; border-radius: 50%; 
+            border: 3px solid var(--primary); 
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
+            background: #000;
         }
 
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid var(--primary);
-            margin-bottom: 1rem;
-            object-fit: cover;
+        h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; background: linear-gradient(to bottom, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -2px; }
+        .id-badge { display: inline-block; background: rgba(168, 85, 247, 0.2); border: 1px solid var(--primary); padding: 5px 15px; border-radius: 5px; font-family: monospace; font-size: 0.8rem; margin-top: 10px; color: var(--primary); }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .card { 
+            background: var(--glass); padding: 35px; border-radius: 25px; 
+            border: 1px solid rgba(168, 85, 247, 0.2); backdrop-filter: blur(20px);
+            transition: 0.4s;
         }
+        .card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+        .card h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.4rem; text-transform: uppercase; letter-spacing: 1px; }
+        .card p { font-size: 0.95rem; line-height: 1.7; opacity: 0.8; }
 
-        h1 { color: var(--primary); margin: 0.5rem 0; letter-spacing: 2px; }
-        p { opacity: 0.8; line-height: 1.6; }
+        .specialty-tag { display: inline-block; margin-right: 8px; margin-top: 10px; font-size: 0.7rem; background: var(--primary); color: #000; padding: 3px 10px; border-radius: 4px; font-weight: 900; }
 
-        .info-box {
-            background: rgba(168, 85, 247, 0.1);
-            padding: 1rem;
-            border-radius: 10px;
-            margin: 1.5rem 0;
-            text-align: left;
+        footer { 
+            width: 100%; padding: 40px 20px; background: rgba(5, 5, 10, 0.9); 
+            border-top: 1px solid rgba(168, 85, 247, 0.2); text-align: center; 
+            font-size: 0.75rem; opacity: 0.6; margin-top: auto;
         }
-
-        .info-item { margin-bottom: 10px; font-size: 0.9rem; }
-        .label { font-weight: bold; color: var(--primary); }
-
-        .specialty {
-            display: inline-block;
-            background: var(--primary);
-            color: black;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.8rem;
-            margin-top: 10px;
-        }
-
-        footer { font-size: 0.7rem; margin-top: 2rem; opacity: 0.5; }
     </style>
 </head>
 <body>
+    <div class="container">
+        <nav>
+            <a href="#">The Director</a>
+            <a href="index.html">The Bot</a>
+            <a href="https://discord.gg/r9QKNEvhBK" target="_blank">Contact</a>
+        </nav>
 
-<div class="container">
-    <img src="https://static.wikia.nocookie.net/cookierunkingdom/images/d/d4/Shadow_Milk_Cookie_Full.png" alt="Director Moon" class="profile-img">
-    <h1>DIRECTOR MOON</h1>
-    <p><i>"The strings of the Archive are under my command."</i></p>
+        <header>
+            <div class="profile-wrapper">
+                <img src="https://lanyard.vencord.dev/api/971381693971824700?avatar=true" class="director-avatar" alt="Director Moon">
+            </div>
+            <h1>DIRECTOR MOON</h1>
+            <div class="id-badge">SOVEREIGN ID: 971381693971824700</div>
+            <p style="margin-top: 20px; font-style: italic; opacity: 0.7;">"I don't just write code. I weave the strings of reality."</p>
+        </header>
 
-    <div class="info-box">
-        <div class="info-item"><span class="label">Discord ID:</span> 971381693971824700</div>
-        <div class="info-item"><span class="label">Role:</span> Bot Architect & Archive Sovereign</div>
-        <div class="info-item"><span class="label">Project:</span> SMC (Shadow Milk Cookie Bot)</div>
+        <div class="grid">
+            <div class="card">
+                <h3>🎭 Master of Puppets</h3>
+                <p>Architect of the SMC (Shadow Milk Cookie) Bot system. Specialized in creating immersive theatrical experiences through Discord API.</p>
+                <div class="specialty-tag">JAVASCRIPT</div>
+                <div class="specialty-tag">DISCORD.JS</div>
+                <div class="specialty-tag">BACKEND</div>
+            </div>
+
+            <div class="card">
+                <h3>📜 Archive Custodian</h3>
+                <p>Curator of the most complex Cookie Run Kingdom lore database. My archive contains the forbidden knowledge of the Beasts and Ancients.</p>
+                <div class="specialty-tag">DATABASE</div>
+                <div class="specialty-tag">LORE DESIGN</div>
+            </div>
+
+            <div class="card">
+                <h3>🗡️ Shadow Governance</h3>
+                <p>Expert in server infrastructure and automated moderation. I ensure the stage remains perfect, and the puppets follow the script.</p>
+                <div class="specialty-tag">SYSTEMS</div>
+                <div class="specialty-tag">SECURITY</div>
+            </div>
+        </div>
     </div>
 
-    <div class="specialty">MASTER OF PUPPET STRINGS (JS DEVELOPER)</div>
-    <div class="specialty">DARK AESTHETICS EXPERT</div>
-
-    <footer>The Director's Archive • No puppet remains without strings.</footer>
-</div>
-
+    <footer>
+        The Director's Archive | Established 2026 | "Everything is a performance, and I am the one holding the script."
+    </footer>
 </body>
 </html>
