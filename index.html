@@ -6,150 +6,123 @@
     <title>The Director | Sovereign Archive</title>
     <style>
         :root { 
-            --primary: #a855f7; 
-            --accent: #6366f1; 
+            --primary: #a855f7; /* Roxo SMC */
+            --accent: #6366f1;  /* Azul Sombras */
             --glass: rgba(10, 10, 20, 0.94); 
             --text: #f8fafc; 
-            --glitch-speed: 2s;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; margin: 0; scroll-behavior: smooth; background: #05050a; }
+        body { color: var(--text); font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; }
 
-        html, body { height: 100%; margin: 0; scroll-behavior: smooth; }
-        body { 
-            color: var(--text); 
-            font-family: 'Segoe UI', system-ui, sans-serif; 
-            display: flex; 
-            flex-direction: column; 
-            min-height: 100vh; 
-            overflow-x: hidden; 
-            background: #05050a; 
-        }
-
-        /* FUNDO DINÂMICO */
+        /* FUNDO DINÂMICO DO ARQUIVO */
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: url('7(Special).jpg') no-repeat center center;
             background-size: cover; z-index: -2;
-            animation: bgPulse 12s infinite alternate ease-in-out;
+            animation: bgMove 20s infinite alternate linear;
         }
-        @keyframes bgPulse {
-            from { transform: scale(1) rotate(0deg); }
-            to { transform: scale(1.08) rotate(1deg); }
-        }
+        @keyframes bgMove { from { transform: scale(1.1); } to { transform: scale(1.2) translateY(-2%); } }
 
         body::after { 
             content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.85) 100%); 
+            background: radial-gradient(circle at center, rgba(168, 85, 247, 0.15) 0%, rgba(0,0,0,0.85) 100%); 
             z-index: -1; 
         }
 
         .container { max-width: 1200px; width: 100%; padding: 20px; flex: 1; margin: 0 auto; }
 
-        /* NAV IGUAL AO BOT (DESCE SUAVE) */
+        /* NAV COMPACTA E BRILHANTE */
         nav { 
             display: flex; justify-content: center; gap: 15px; 
             padding: 12px 20px; background: var(--glass); backdrop-filter: blur(25px); 
-            border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 50px; 
+            border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 50px; 
             margin-bottom: 40px; position: sticky; top: 30px; z-index: 100;
             width: fit-content; margin-left: auto; margin-right: auto;
-            animation: slideDown 1s cubic-bezier(0.23, 1, 0.32, 1);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: navFade 1.2s ease;
         }
+        @keyframes navFade { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        nav a { color: var(--text); text-decoration: none; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; transition: 0.3s; }
+        nav a:hover { opacity: 1; color: var(--primary); text-shadow: 0 0 10px var(--primary); }
 
-        nav a { 
-            color: var(--text); text-decoration: none; font-size: 0.7rem; 
-            font-weight: 800; text-transform: uppercase; letter-spacing: 1px; 
-            opacity: 0.7; transition: 0.4s; 
-        }
-        nav a:hover { opacity: 1; color: var(--primary); text-shadow: 0 0 15px var(--primary); }
-
-        /* HEADER & AVATAR FLUTUANTE */
-        header { text-align: center; margin-bottom: 60px; padding: 40px 0; }
-        
-        .profile-wrapper { 
-            position: relative; display: inline-block; margin-bottom: 25px; 
-            animation: floating 5s infinite ease-in-out;
-        }
-        @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        /* AVATAR COM PULSO DE SOMBRA */
+        .profile-wrapper { position: relative; display: inline-block; margin-bottom: 25px; animation: float 6s infinite ease-in-out; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
         
         .director-avatar { 
             width: 160px; height: 160px; border-radius: 50%; 
             border: 4px solid var(--primary); 
-            box-shadow: 0 0 50px rgba(168, 85, 247, 0.3);
-            object-fit: cover; background: #000;
+            box-shadow: 0 0 40px rgba(168, 85, 247, 0.5);
+            object-fit: cover;
         }
 
-        /* NOVO TÍTULO GLITCH DIGITAL */
+        /* TEXTO COM EFEITO GLITCH SMC */
+        .glitch-text {
+            position: relative;
+            animation: mainGlitch 3s infinite;
+        }
+
+        @keyframes mainGlitch {
+            0%, 90%, 100% { transform: none; opacity: 1; text-shadow: none; }
+            92% { transform: skewX(10deg); opacity: 0.8; text-shadow: 2px 0 var(--primary), -2px 0 var(--accent); }
+            95% { transform: skewX(-10deg); text-shadow: -2px 0 var(--primary), 2px 0 var(--accent); }
+            98% { transform: scaleY(1.1); }
+        }
+
         h1 { 
             font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; 
-            background: linear-gradient(to bottom, #fff, var(--primary)); 
+            background: linear-gradient(to bottom, #fff 30%, var(--primary)); 
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
-            letter-spacing: -2px; position: relative;
-            animation: glitchMain var(--glitch-speed) forwards;
-        }
-
-        @keyframes glitchMain {
-            0% { opacity: 0; transform: translateY(10px); filter: blur(10px); }
-            20% { opacity: 0.8; transform: translateX(-4px); text-shadow: 2px 0 red, -2px 0 cyan; }
-            30% { transform: translateX(4px); text-shadow: -2px 0 red, 2px 0 cyan; }
-            40% { transform: translateX(0); text-shadow: none; filter: blur(0); }
-            100% { opacity: 1; transform: translateY(0); }
+            letter-spacing: -2px; margin-top: 10px;
         }
 
         .id-badge { 
-            display: inline-block; background: rgba(168, 85, 247, 0.15); 
-            border: 1px solid var(--primary); padding: 6px 18px; border-radius: 8px; 
+            display: inline-block; background: rgba(168, 85, 247, 0.1); 
+            border: 1px solid var(--primary); padding: 8px 20px; border-radius: 5px; 
             font-family: monospace; font-size: 0.85rem; margin-top: 15px; 
-            color: var(--primary); transition: 0.4s; cursor: pointer;
+            color: var(--primary); text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
         }
-        .id-badge:hover { background: var(--primary); color: #000; box-shadow: 0 0 25px var(--primary); }
 
-        /* GRID E CARDS GLASSMORPHISM */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        /* CARDS COM INTERAÇÃO DE "TEATRO" */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
         
         .card { 
-            background: rgba(10, 10, 25, 0.8); padding: 40px; border-radius: 30px; 
-            border: 1px solid rgba(168, 85, 247, 0.1); backdrop-filter: blur(20px);
-            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            opacity: 0; transform: translateY(40px);
-            animation: cardReveal 0.8s forwards;
-        }
-        .card:nth-child(1) { animation-delay: 0.6s; }
-        .card:nth-child(2) { animation-delay: 0.8s; }
-        .card:nth-child(3) { animation-delay: 1.0s; }
-
-        @keyframes cardReveal { to { opacity: 1; transform: translateY(0); } }
-
-        .card:hover { 
-            transform: scale(1.03) translateY(-10px); 
-            border-color: var(--primary); 
-            box-shadow: 0 25px 60px rgba(0,0,0,0.7);
-            background: rgba(20, 20, 40, 0.9);
+            background: rgba(10, 10, 20, 0.85); padding: 40px; border-radius: 25px; 
+            border: 1px solid rgba(168, 85, 247, 0.2); backdrop-filter: blur(20px);
+            transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            position: relative; overflow: hidden;
         }
 
-        .card h3 { color: var(--primary); margin-bottom: 18px; font-size: 1.5rem; letter-spacing: 1px; }
-        .card p { font-size: 0.95rem; line-height: 1.8; opacity: 0.8; }
+        .card::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            transform: translateX(-100%); transition: 0.5s;
+        }
+
+        .card:hover { transform: translateY(-10px) scale(1.02); border-color: var(--primary); }
+        .card:hover::before { transform: translateX(100%); }
+
+        .card h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.4rem; text-transform: uppercase; }
+        .card p { font-size: 0.95rem; line-height: 1.7; opacity: 0.8; }
 
         .specialty-tag { 
-            display: inline-block; margin-right: 10px; margin-top: 15px; 
-            font-size: 0.7rem; background: var(--primary); color: #000; 
-            padding: 4px 12px; border-radius: 6px; font-weight: 900; 
-            transition: 0.3s; 
+            display: inline-block; margin-right: 8px; margin-top: 15px; 
+            font-size: 0.65rem; background: var(--primary); color: #000; 
+            padding: 4px 12px; border-radius: 4px; font-weight: 900; 
         }
-        .specialty-tag:hover { background: #fff; transform: translateY(-3px); }
 
         footer { 
-            width: 100%; padding: 50px 20px; background: rgba(3, 3, 8, 0.95); 
+            width: 100%; padding: 40px; background: rgba(5, 5, 10, 0.95); 
             border-top: 1px solid rgba(168, 85, 247, 0.2); text-align: center; 
-            font-size: 0.8rem; opacity: 0.5; margin-top: auto; letter-spacing: 1px;
+            font-size: 0.75rem; opacity: 0.5; margin-top: auto; letter-spacing: 2px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="text-align: center;">
         <nav>
             <a href="index.html">The Director</a>
             <a href="https://shadowmilkcookie-dev.github.io/shadow-milk-site/index.html">The Bot</a>
@@ -160,30 +133,33 @@
             <div class="profile-wrapper">
                 <img src="ba33bb69a0fc7262ce0f7a15ee17a1e0~2.jpg" class="director-avatar" alt="Director Moon">
             </div>
-            <h1>DIRECTOR MOON</h1>
+            <div class="glitch-text">
+                <h1>DIRECTOR MOON</h1>
+            </div>
             <div class="id-badge">SOVEREIGN ID: 971381693971824700</div>
-            <p style="margin-top: 25px; font-style: italic; opacity: 0.7; font-size: 1.1rem; letter-spacing: 0.5px;">"I don't just write code. I weave the strings of reality."</p>
+            <p style="margin-top: 25px; font-style: italic; opacity: 0.8; font-size: 1rem;" class="glitch-text">
+                "I don't just write code. I weave the strings of reality."
+            </p>
         </header>
 
-        <div class="grid">
+        <div class="grid" style="text-align: left;">
             <div class="card">
                 <h3>🎭 Master of Puppets</h3>
-                <p>Architect of the SMC (Shadow Milk Cookie) Bot system. Specialized in creating immersive theatrical experiences through Discord API.</p>
+                <p>Architect of the SMC Bot system. Creating immersive theatrical experiences through Discord API.</p>
                 <div class="specialty-tag">JAVASCRIPT</div>
                 <div class="specialty-tag">DISCORD.JS</div>
-                <div class="specialty-tag">BACKEND</div>
             </div>
 
             <div class="card">
                 <h3>📜 Archive Custodian</h3>
-                <p>Curator of the most complex Cookie Run Kingdom lore database. My archive contains the forbidden knowledge of the Beasts and Ancients.</p>
+                <p>Curator of the Cookie Run Kingdom lore database. Forbidden knowledge of the Beasts.</p>
                 <div class="specialty-tag">DATABASE</div>
                 <div class="specialty-tag">LORE DESIGN</div>
             </div>
 
             <div class="card">
                 <h3>🗡️ Shadow Governance</h3>
-                <p>Expert in server infrastructure and automated moderation. I ensure the stage remains perfect, and the puppets follow the script.</p>
+                <p>Server infrastructure and automated moderation. Ensuring the stage remains perfect.</p>
                 <div class="specialty-tag">SYSTEMS</div>
                 <div class="specialty-tag">SECURITY</div>
             </div>
@@ -191,7 +167,7 @@
     </div>
 
     <footer>
-        THE DIRECTOR'S ARCHIVE | ESTABLISHED 2026 | "Everything is a performance, and I am the one holding the script."
+        SHADOW MILK ARCHIVE | THE DIRECTOR'S SCRIPT | © 2026
     </footer>
 </body>
 </html>
