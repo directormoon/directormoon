@@ -11,7 +11,6 @@
         html, body { height: 100%; margin: 0; }
         body { color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; }
 
-        /* FUNDO SMC ORIGINAL */
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: url('7(Special).jpg') no-repeat center center;
@@ -26,7 +25,6 @@
 
         .container { max-width: 1200px; width: 100%; padding: 20px; flex: 1; margin: 0 auto; }
 
-        /* NAV IGUAL AO INDEX */
         nav { 
             display: flex; justify-content: center; gap: 12px; 
             padding: 12px 15px; background: var(--glass); backdrop-filter: blur(25px); 
@@ -46,7 +44,6 @@
         header { text-align: center; margin-bottom: 50px; padding: 20px 0; }
         h1 { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 900; background: linear-gradient(to bottom, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -1px; text-transform: uppercase; }
         
-        /* GRID DE CONTACTOS NO ESTILO DO INDEX */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         
         .contact-card { 
@@ -62,10 +59,14 @@
             box-shadow: 0 10px 40px rgba(168, 85, 247, 0.2); 
         }
 
+        /* CONFIGURAÇÃO DOS ÍCONES */
         .contact-card img { 
             width: 60px; height: 60px; margin-bottom: 15px; 
-            object-fit: contain; border-radius: 0; /* Respeitando o formato original */
+            object-fit: contain; 
         }
+
+        /* ARREDONDAMENTO APENAS PARA DISCORD E ROBLOX */
+        .rounded-icon { border-radius: 14px; }
 
         .contact-card h3 { color: var(--primary); margin-bottom: 10px; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; }
         .contact-card p { font-size: 0.85rem; opacity: 0.7; }
@@ -92,7 +93,7 @@
 
         <div class="grid">
             <a href="https://discord.gg/Yrmz9dJ5C9" target="_blank" class="contact-card">
-                <img src="discord.png" alt="Discord">
+                <img src="discord.png" class="rounded-icon" alt="Discord">
                 <h3>Discord</h3>
                 <p>Join the theater of shadows.</p>
             </a>
@@ -116,7 +117,7 @@
             </a>
 
             <a href="https://www.roblox.com/users/1533939692/profile" target="_blank" class="contact-card">
-                <img src="roblox.png" alt="Roblox">
+                <img src="roblox.png" class="rounded-icon" alt="Roblox">
                 <h3>Roblox</h3>
                 <p>The stage of infinite games.</p>
             </a>
@@ -127,4 +128,4 @@
         The Director's Archive | Established 2026 | "Everything is a performance."
     </footer>
 </body>
-  </html>
+</html>
