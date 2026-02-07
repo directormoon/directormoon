@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Director | Contact Archive</title>
+    <style>
+        :root { --primary: #a855f7; --accent: #6366f1; --glass: rgba(10, 10, 20, 0.94); --text: #f8fafc; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body { height: 100%; margin: 0; }
+        body { color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; }
+
+        /* FUNDO SMC ORIGINAL */
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('7(Special).jpg') no-repeat center center;
+            background-size: cover; z-index: -2;
+        }
+
+        body::after { 
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0, 0, 0, 0.65); 
+            z-index: -1; 
+        }
+
+        .container { max-width: 1200px; width: 100%; padding: 20px; flex: 1; margin: 0 auto; }
+
+        /* NAV IGUAL AO INDEX */
+        nav { 
+            display: flex; justify-content: center; gap: 12px; 
+            padding: 12px 15px; background: var(--glass); backdrop-filter: blur(25px); 
+            border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 50px; 
+            margin-bottom: 40px; position: sticky; top: 20px; z-index: 100;
+            width: fit-content; margin-left: auto; margin-right: auto;
+        }
+
+        nav a { 
+            color: var(--text); text-decoration: none; 
+            font-size: 0.65rem; font-weight: 700; 
+            text-transform: uppercase; letter-spacing: 0.5px; 
+            opacity: 0.8; transition: 0.3s; white-space: nowrap; 
+        }
+        nav a:hover { opacity: 1; color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+
+        header { text-align: center; margin-bottom: 50px; padding: 20px 0; }
+        h1 { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 900; background: linear-gradient(to bottom, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -1px; text-transform: uppercase; }
+        
+        /* GRID DE CONTACTOS NO ESTILO DO INDEX */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        
+        .contact-card { 
+            background: var(--glass); padding: 25px; border-radius: 25px; 
+            border: 1px solid rgba(168, 85, 247, 0.15); backdrop-filter: blur(20px);
+            transition: 0.4s; text-decoration: none; color: var(--text);
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+        }
+        
+        .contact-card:hover { 
+            transform: translateY(-10px); 
+            border-color: var(--primary); 
+            box-shadow: 0 10px 40px rgba(168, 85, 247, 0.2); 
+        }
+
+        .contact-card img { 
+            width: 60px; height: 60px; margin-bottom: 15px; 
+            object-fit: contain; border-radius: 0; /* Respeitando o formato original */
+        }
+
+        .contact-card h3 { color: var(--primary); margin-bottom: 10px; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; }
+        .contact-card p { font-size: 0.85rem; opacity: 0.7; }
+
+        footer { 
+            width: 100%; padding: 40px 20px; background: rgba(5, 5, 10, 0.9); 
+            border-top: 1px solid rgba(168, 85, 247, 0.2); text-align: center; 
+            font-size: 0.75rem; opacity: 0.6; margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html">The Director</a>
+            <a href="https://shadowmilkcookie-dev.github.io/shadowmilk/index.html">The Bot</a>
+            <a href="contact.html" style="color: var(--primary); opacity: 1;">Contact</a>
+        </nav>
+
+        <header>
+            <h1>Sovereign Links</h1>
+            <p style="opacity: 0.6; margin-top: 10px;">"Connect with the architect of the performance."</p>
+        </header>
+
+        <div class="grid">
+            <a href="https://discord.gg/Yrmz9dJ5C9" target="_blank" class="contact-card">
+                <img src="discord.png" alt="Discord">
+                <h3>Discord</h3>
+                <p>Join the theater of shadows.</p>
+            </a>
+
+            <a href="https://youtube.com/@directormoon-yt?si=eHzksUPLA8VQt9UH" target="_blank" class="contact-card">
+                <img src="youtube.png" alt="YouTube">
+                <h3>YouTube</h3>
+                <p>Watch the strings being pulled.</p>
+            </a>
+
+            <a href="https://www.tiktok.com/@directormoon_" target="_blank" class="contact-card">
+                <img src="tiktok.png" alt="TikTok">
+                <h3>TikTok</h3>
+                <p>Short glimpses into the archive.</p>
+            </a>
+
+            <a href="https://www.instagram.com/directormoon_?igsh=MW4ydW1heW1jMXd1" target="_blank" class="contact-card">
+                <img src="instagram.png" alt="Instagram">
+                <h3>Instagram</h3>
+                <p>Behind the curtains of reality.</p>
+            </a>
+
+            <a href="https://www.roblox.com/users/1533939692/profile" target="_blank" class="contact-card">
+                <img src="roblox.png" alt="Roblox">
+                <h3>Roblox</h3>
+                <p>The stage of infinite games.</p>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        The Director's Archive | Established 2026 | "Everything is a performance."
+    </footer>
+</body>
+  </html>
