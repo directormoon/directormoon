@@ -3,58 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shadow Milk | Director Moon</title>
+    <title>Director Moon | Shadow Milk Archive</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="background-overlay"></div>
-    
-    <main class="dashboard">
-        <aside class="side-panel">
-            <div class="profile-card">
+    <div class="bg-overlay"></div>
+
+    <main class="app-container">
+        <aside class="profile-sidebar">
+            <div class="glass-card profile-info">
                 <img src="sm.png" alt="Director Moon" class="avatar">
                 <h1>DIRECTOR MOON</h1>
-                <p class="id-tag">ID: 971381693971824700</p>
+                <p class="badge">SOVEREIGN ID: 971381693971824700</p>
+                <p class="quote">"I weave the strings of reality."</p>
             </div>
-            
-            <nav class="social-links">
-                <a href="#"><img src="discord.png" alt="Discord"></a>
-                <a href="#"><img src="youtube.png" alt="YouTube"></a>
-                <a href="#"><img src="tiktok.png" alt="TikTok"></a>
-                <a href="#"><img src="instagram.png" alt="Instagram"></a>
-                <a href="#"><img src="roblox.png" alt="Roblox"></a>
-            </nav>
+
+            <div class="social-grid">
+                <a href="#" class="social-icon"><img src="discord.png"></a>
+                <a href="#" class="social-icon"><img src="youtube.png"></a>
+                <a href="#" class="social-icon"><img src="tiktok.png"></a>
+                <a href="#" class="social-icon"><img src="instagram.png"></a>
+                <a href="#" class="social-icon"><img src="roblox.png"></a>
+            </div>
         </aside>
 
-        <section class="main-content">
-            <header class="hero-header">
-                <h2>SHADOW MILK</h2>
-                <p>"The strings of the multiverse are mine to pull."</p>
-            </header>
+        <section class="content-area">
+            <h2 class="system-title">SHADOW MILK SYSTEM</h2>
 
-            <div class="grid-container">
-                <div class="glass-card">
-                    <h3>Key Scripts</h3>
-                    <ul class="cmd-list">
-                        <li><code>/shadowmilk</code> - Summon Archive</li>
-                        <li><code>/mysticflour</code> - Beast Dossier</li>
-                        <li><code>/nuke</code> - Erase Stage</li>
-                        <li><code>/stats</code> - Performance Data</li>
-                    </ul>
+            <details class="drawer" open>
+                <summary>KEY SCRIPTS <span class="status-dot"></span></summary>
+                <div class="drawer-content">
+                    <div class="cmd-row"><code>/shadowmilk</code> <span>Summon the master.</span></div>
+                    <div class="cmd-row"><code>/mysticflour</code> <span>Beast of Apathy dossier.</span></div>
+                    <div class="cmd-row"><code>/burningspice</code> <span>Beast of Destruction dossier.</span></div>
+                    <div class="cmd-row"><code>/nuke</code> <span>Erase stage dialogue.</span></div>
+                    <div class="cmd-row"><code>/marry</code> <span>Bind two puppets.</span></div>
+                    <div class="cmd-row"><code>/stats</code> <span>Review performance data.</span></div>
                 </div>
-            </div>
-        </section>
+            </details>
 
-        <aside class="info-panel">
-            <div class="glass-card mini">
-                <h3>The Playbook</h3>
-                <p>1. No exploits.<br>2. Director reserves all rights.<br>3. Respect the script.</p>
-            </div>
-            <div class="glass-card mini">
-                <h3>The Records</h3>
-                <p>We store Discord IDs and Fragments. No data is sold.</p>
-            </div>
-        </aside>
+            <details class="drawer">
+                <summary>THE PLAYBOOK (TERMS)</summary>
+                <div class="drawer-content text-block">
+                    <p><strong>1. Performance:</strong> No exploitation of ANY modules permitted. Sabotaging the Archive results in a permanent cut of your strings (Ban).</p>
+                    <p><strong>2. Sovereignty:</strong> The Director reserves the right to wipe any dossier to maintain order.</p>
+                </div>
+            </details>
+
+            <details class="drawer">
+                <summary>THE RECORDS (PRIVACY)</summary>
+                <div class="drawer-content text-block">
+                    <p>We store Discord IDs, Economy Fragments, and Reputation points. Data is used ONLY to maintain theatrical standing. No data is sold to external kingdoms.</p>
+                </div>
+            </details>
+
+            <details class="drawer">
+                <summary>CONTACT & SUPPORT</summary>
+                <div class="drawer-content text-block">
+                    <p>Reach out through the official Discord Domain for support or dossier erasure requests.</p>
+                </div>
+            </details>
+        </section>
     </main>
+
+    <footer class="footer-bar">
+        <span>SYSTEM VERSION: 2.0.4</span>
+        <span>LOCATION: MULTIVERSE THEATER</span>
+    </footer>
 </body>
 </html>
