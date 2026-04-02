@@ -12,6 +12,7 @@
             --accent: #6c5ce7; 
             --bg: #050208;
             --glass: rgba(15, 10, 25, 0.94);
+            --glow: 0 0 10px rgba(162, 155, 254, 0.5);
         }
 
         body {
@@ -59,6 +60,7 @@
             text-align: center;
             border-radius: 8px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.8);
+            position: relative;
         }
 
         .avatar {
@@ -68,11 +70,54 @@
             padding: 5px;
             border-radius: 50%;
             object-fit: cover;
+            box-shadow: var(--glow);
         }
 
         h1 { font-size: 1.5rem; margin: 15px 0 5px; letter-spacing: 2px; color: white; }
+        
+        /* Efeito Glitch no Título principal */
+        h1:hover {
+            text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff;
+            animation: glitch 0.3s infinite;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
         .badge { font-size: 0.65rem; color: var(--primary); background: rgba(108, 92, 231, 0.2); padding: 5px 10px; border-radius: 3px; display: inline-block; }
         .quote { font-size: 0.8rem; font-style: italic; opacity: 0.8; margin: 15px 0; line-height: 1.4; }
+
+        /* Status Bar Pulsante */
+        .status-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 15px;
+            font-size: 0.7rem;
+            color: #00ff00;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        .pulse-dot {
+            width: 7px;
+            height: 7px;
+            background-color: #00ff00;
+            border-radius: 50%;
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 10px #00ff00; }
+            100% { opacity: 0.4; transform: scale(0.9); }
+        }
 
         /* Social Icons */
         .social-grid {
@@ -88,17 +133,13 @@
             height: 42px;
             transition: 0.3s ease;
             filter: brightness(1.2);
-            object-fit: contain; /* Garante que o YT não fique achatado */
+            object-fit: contain;
         }
 
-        /* Quadrados com cantos arredondados para Discord e Roblox */
-        .rounded-square img {
-            border-radius: 10px; 
-            background: rgba(255, 255, 255, 0.05); /* Leve fundo para destacar o formato */
-        }
+        .rounded-square img { border-radius: 10px; background: rgba(255, 255, 255, 0.05); }
 
         .social-icon:hover img {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.1);
             filter: brightness(1.5) drop-shadow(0 0 8px var(--primary));
         }
 
@@ -121,7 +162,10 @@
             margin-bottom: 10px;
             border-radius: 4px;
             overflow: hidden;
+            transition: 0.3s;
         }
+
+        .drawer:hover { border-color: var(--primary); }
 
         summary {
             padding: 15px;
@@ -132,10 +176,8 @@
             justify-content: space-between;
             align-items: center;
             background: rgba(108, 92, 231, 0.1);
-            transition: 0.2s;
         }
 
-        summary:hover { background: rgba(108, 92, 231, 0.2); }
         summary::after { content: "[+]"; color: var(--primary); font-size: 0.8rem; }
         details[open] summary::after { content: "[-]"; }
 
@@ -155,6 +197,14 @@
         
         code { color: var(--primary); font-weight: bold; }
 
+        .beast-tag {
+            background: rgba(162, 155, 254, 0.1);
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-left: 2px solid var(--primary);
+        }
+
         .footer-bar {
             margin-top: auto;
             background: var(--accent);
@@ -163,12 +213,10 @@
             display: flex;
             justify-content: space-between;
             padding: 10px 20px;
-            letter-spacing: 1px;
         }
 
         @media (max-width: 768px) {
             .app-container { flex-direction: column; padding: 15px; padding-bottom: 80px; }
-            .profile-sidebar { max-width: 100%; }
             .social-icon img { width: 38px; height: 38px; }
             .footer-bar { flex-direction: column; text-align: center; gap: 8px; font-size: 0.5rem; }
         }
@@ -180,27 +228,21 @@
     <main class="app-container">
         <aside class="profile-sidebar">
             <div class="glass-card">
+                <div class="status-container">
+                    <div class="pulse-dot"></div>
+                    <span>SYSTEM ONLINE [V.2.0.4]</span>
+                </div>
+                
                 <img src="sm.png" alt="Director Moon" class="avatar">
                 <h1>DIRECTOR MOON</h1>
                 <p class="badge">SOVEREIGN ID: 971381693971824700</p>
                 <p class="quote">"I don't just write code. I weave the strings of reality."</p>
                 
                 <div class="social-grid">
-                    <a href="https://discord.gg/trJb9jheUS" target="_blank" class="social-icon rounded-square">
-                        <img src="discord.png" alt="Discord">
-                    </a>
-                    
-                    <a href="https://youtube.com/@unknown-d8j4m?si=hz3em3P6DgcxcS1t" target="_blank" class="social-icon">
-                        <img src="youtube.png" alt="YouTube">
-                    </a>
-
-                    <a href="https://www.tiktok.com/@dirmoonofc?_r=1&_t=ZG-95DGepO4hxg" target="_blank" class="social-icon">
-                        <img src="tiktok.png" alt="TikTok">
-                    </a>
-
-                    <a href="https://www.roblox.com/users/1533939692/profile" target="_blank" class="social-icon rounded-square">
-                        <img src="roblox.png" alt="Roblox">
-                    </a>
+                    <a href="https://discord.gg/trJb9jheUS" target="_blank" class="social-icon rounded-square"><img src="discord.png" alt="Discord"></a>
+                    <a href="https://youtube.com/@unknown-d8j4m?si=hz3em3P6DgcxcS1t" target="_blank" class="social-icon"><img src="youtube.png" alt="YouTube"></a>
+                    <a href="https://www.tiktok.com/@dirmoonofc?_r=1&_t=ZG-95DGepO4hxg" target="_blank" class="social-icon"><img src="tiktok.png" alt="TikTok"></a>
+                    <a href="https://www.roblox.com/users/1533939692/profile" target="_blank" class="social-icon rounded-square"><img src="roblox.png" alt="Roblox"></a>
                 </div>
             </div>
         </aside>
@@ -221,17 +263,30 @@
             </details>
 
             <details class="drawer">
+                <summary>THE BEASTS (LORE RECORDS)</summary>
+                <div class="drawer-content">
+                    <div class="beast-tag">
+                        <strong>MYSTIC FLOUR:</strong> The Beast of Apathy. Her silence is the end of all strings.
+                    </div>
+                    <div class="beast-tag">
+                        <strong>BURNING SPICE:</strong> The Beast of Destruction. The fire that consumes the script.
+                    </div>
+                    <p style="font-size: 0.75rem; opacity: 0.6;">*More dossiers pending extraction from the multiverse archive.</p>
+                </div>
+            </details>
+
+            <details class="drawer">
                 <summary>THE PLAYBOOK (TERMS)</summary>
                 <div class="drawer-content">
-                    <p><strong>1. Performance:</strong> No exploitation of ANY modules is permitted. Sabotaging the Archive results in a permanent ban.</p>
-                    <p><strong>2. Sovereignty:</strong> The Director reserves the right to wipe any dossier to maintain order.</p>
+                    <p><strong>1. Performance:</strong> No exploitation permitted. Sabotaging the Archive results in a permanent ban.</p>
+                    <p><strong>2. Sovereignty:</strong> The Director reserves the right to wipe any dossier.</p>
                 </div>
             </details>
 
             <details class="drawer">
                 <summary>THE RECORDS (PRIVACY)</summary>
                 <div class="drawer-content">
-                    <p>We store Discord IDs and Economy Fragments. Data is used solely for the bot's theatrical systems. No data is sold.</p>
+                    <p>We store Discord IDs and Economy Fragments. Data is used solely for the bot's theatrical systems.</p>
                 </div>
             </details>
         </section>
@@ -239,7 +294,6 @@
 
     <footer class="footer-bar">
         <span>&copy; 2026 SHADOW MILK PROJECT</span>
-        <span>STATUS: OPERATIONAL</span>
         <span>LOCATION: MULTIVERSE THEATER</span>
     </footer>
 </body>
