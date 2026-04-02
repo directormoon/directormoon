@@ -1,0 +1,80 @@
+:root {
+    --primary: #7d5fff;
+    --bg-dark: #0a0510;
+    --glass: rgba(20, 10, 35, 0.85);
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: var(--bg-dark);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Background Image 7(Special) */
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('7(Special).jpg') no-repeat center center/cover;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 280px 1fr 280px; /* 3 Columns layout */
+    gap: 20px;
+    padding: 20px;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.glass-card {
+    background: var(--glass);
+    border: 1px solid var(--primary);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.avatar {
+    width: 120px;
+    border-radius: 50%;
+    border: 3px solid var(--primary);
+}
+
+.cmd-list {
+    list-style: none;
+    padding: 0;
+}
+
+.cmd-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.9em;
+}
+
+code {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+/* Responsividade: Vira uma coluna só no Celular */
+@media (max-width: 1024px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    
+    .side-panel, .info-panel {
+        order: 2;
+    }
+    
+    .main-content {
+        order: 1;
+    }
+}
