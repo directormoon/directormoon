@@ -4,71 +4,235 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Director Moon | Shadow Milk Archive</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #a29bfe; 
+            --accent: #6c5ce7; 
+            --bg: #050208;
+            --glass: rgba(15, 10, 25, 0.92);
+        }
+
+        /* Base Setup */
+        body {
+            background-color: var(--bg);
+            color: #e0e0e0;
+            font-family: 'JetBrains Mono', monospace;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Background 7(Special) */
+        .bg-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('7(Special).jpg') center/cover no-repeat;
+            opacity: 0.25;
+            z-index: -1;
+        }
+
+        /* Main Container - Compact Grid */
+        .app-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Sidebar (Director Moon) */
+        .profile-sidebar {
+            flex: 1 1 300px;
+            max-width: 350px;
+        }
+
+        .glass-card {
+            background: var(--glass);
+            border: 1px solid var(--accent);
+            padding: 20px;
+            text-align: center;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .avatar {
+            width: 140px;
+            height: 140px;
+            border: 2px solid var(--primary);
+            padding: 5px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        h1 { font-size: 1.4rem; margin: 15px 0 5px; color: white; }
+        .badge { font-size: 0.65rem; color: var(--primary); background: rgba(108, 92, 231, 0.2); padding: 5px; border-radius: 3px; display: inline-block; }
+        .quote { font-size: 0.8rem; font-style: italic; opacity: 0.8; margin-top: 10px; }
+
+        /* Social Icons */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .social-icon img {
+            width: 100%;
+            max-width: 35px;
+            filter: grayscale(100%) brightness(1.5);
+            transition: 0.3s;
+        }
+
+        .social-icon:hover img { filter: grayscale(0%) brightness(1); transform: translateY(-3px); }
+
+        /* Content Area (Shadow Milk System) */
+        .content-area {
+            flex: 2 1 500px;
+        }
+
+        .system-title {
+            font-size: 1.5rem;
+            border-left: 4px solid var(--accent);
+            padding-left: 15px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px var(--accent);
+        }
+
+        /* Drawers (Accordions) */
+        .drawer {
+            background: var(--glass);
+            border: 1px solid rgba(108, 92, 231, 0.3);
+            margin-bottom: 8px;
+            border-radius: 2px;
+        }
+
+        summary {
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(108, 92, 231, 0.1);
+        }
+
+        summary::after { content: "[+]"; color: var(--primary); font-size: 0.8rem; }
+        details[open] summary::after { content: "[-]"; }
+        summary:hover { background: rgba(108, 92, 231, 0.2); }
+
+        .drawer-content {
+            padding: 15px;
+            border-top: 1px solid rgba(108, 92, 231, 0.2);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        /* Commands List */
+        .cmd-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px dotted rgba(255,255,255,0.1);
+        }
+        
+        code { color: var(--primary); font-weight: bold; background: rgba(0,0,0,0.3); padding: 2px 4px; }
+
+        /* Footer */
+        .footer-bar {
+            margin-top: auto;
+            background: var(--accent);
+            color: white;
+            font-size: 0.6rem;
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 20px;
+        }
+
+        /* MOBILE OPTIMIZATION (Crucial) */
+        @media (max-width: 768px) {
+            .app-container {
+                flex-direction: column;
+                padding: 15px;
+            }
+            .profile-sidebar {
+                max-width: 100%;
+            }
+            .avatar { width: 100px; height: 100px; }
+            .system-title { font-size: 1.2rem; text-align: center; }
+            .social-grid { justify-items: center; }
+            .footer-bar { position: relative; font-size: 0.55rem; flex-direction: column; text-align: center; gap: 5px; }
+        }
+    </style>
 </head>
 <body>
     <div class="bg-overlay"></div>
 
     <main class="app-container">
         <aside class="profile-sidebar">
-            <div class="glass-card profile-info">
+            <div class="glass-card">
                 <img src="sm.png" alt="Director Moon" class="avatar">
                 <h1>DIRECTOR MOON</h1>
                 <p class="badge">SOVEREIGN ID: 971381693971824700</p>
-                <p class="quote">"I weave the strings of reality."</p>
-            </div>
-
-            <div class="social-grid">
-                <a href="#" class="social-icon"><img src="discord.png"></a>
-                <a href="#" class="social-icon"><img src="youtube.png"></a>
-                <a href="#" class="social-icon"><img src="tiktok.png"></a>
-                <a href="#" class="social-icon"><img src="instagram.png"></a>
-                <a href="#" class="social-icon"><img src="roblox.png"></a>
+                <p class="quote">"I don't just write code. I weave the strings of reality."</p>
+                
+                <div class="social-grid">
+                    <a href="#" class="social-icon"><img src="discord.png" alt="Discord"></a>
+                    <a href="#" class="social-icon"><img src="youtube.png" alt="YouTube"></a>
+                    <a href="#" class="social-icon"><img src="tiktok.png" alt="TikTok"></a>
+                    <a href="#" class="social-icon"><img src="instagram.png" alt="Instagram"></a>
+                    <a href="#" class="social-icon"><img src="roblox.png" alt="Roblox"></a>
+                </div>
             </div>
         </aside>
 
         <section class="content-area">
-            <h2 class="system-title">SHADOW MILK SYSTEM</h2>
+            <h2 class="system-title">SHADOW MILK ARCHIVE</h2>
 
             <details class="drawer" open>
-                <summary>KEY SCRIPTS <span class="status-dot"></span></summary>
+                <summary>KEY SCRIPTS (COMMANDS)</summary>
                 <div class="drawer-content">
-                    <div class="cmd-row"><code>/shadowmilk</code> <span>Summon the master.</span></div>
-                    <div class="cmd-row"><code>/mysticflour</code> <span>Beast of Apathy dossier.</span></div>
-                    <div class="cmd-row"><code>/burningspice</code> <span>Beast of Destruction dossier.</span></div>
-                    <div class="cmd-row"><code>/nuke</code> <span>Erase stage dialogue.</span></div>
-                    <div class="cmd-row"><code>/marry</code> <span>Bind two puppets.</span></div>
-                    <div class="cmd-row"><code>/stats</code> <span>Review performance data.</span></div>
+                    <div class="cmd-row"><code>/shadowmilk</code> <span>Summon the master</span></div>
+                    <div class="cmd-row"><code>/mysticflour</code> <span>Dossier: Beast of Apathy</span></div>
+                    <div class="cmd-row"><code>/burningspice</code> <span>Dossier: Beast of Destruction</span></div>
+                    <div class="cmd-row"><code>/explore</code> <span>Search for Fragments</span></div>
+                    <div class="cmd-row"><code>/marry</code> <span>Bind two puppets</span></div>
+                    <div class="cmd-row"><code>/nuke</code> <span>Erase stage dialogue</span></div>
+                    <div class="cmd-row"><code>/stats</code> <span>System Performance</span></div>
                 </div>
             </details>
 
             <details class="drawer">
                 <summary>THE PLAYBOOK (TERMS)</summary>
-                <div class="drawer-content text-block">
-                    <p><strong>1. Performance:</strong> No exploitation of ANY modules permitted. Sabotaging the Archive results in a permanent cut of your strings (Ban).</p>
-                    <p><strong>2. Sovereignty:</strong> The Director reserves the right to wipe any dossier to maintain order.</p>
+                <div class="drawer-content">
+                    <p><strong>1. Performance:</strong> No exploitation of ANY modules or systems is permitted. Sabotaging the Archive results in a permanent cut of your strings (Ban).</p>
+                    <p><strong>2. Sovereignty:</strong> The Sovereign (Director Moon) reserves the right to wipe any dossier or restrict access at any time.</p>
+                    <p><strong>3. Interaction:</strong> Respect the actors and the script. Chaos is only permitted under the Director's supervision.</p>
                 </div>
             </details>
 
             <details class="drawer">
                 <summary>THE RECORDS (PRIVACY)</summary>
-                <div class="drawer-content text-block">
-                    <p>We store Discord IDs, Economy Fragments, and Reputation points. Data is used ONLY to maintain theatrical standing. No data is sold to external kingdoms.</p>
-                </div>
-            </details>
-
-            <details class="drawer">
-                <summary>CONTACT & SUPPORT</summary>
-                <div class="drawer-content text-block">
-                    <p>Reach out through the official Discord Domain for support or dossier erasure requests.</p>
+                <div class="drawer-content">
+                    <p>We store <strong>Discord IDs</strong>, <strong>Economy Fragments</strong>, and <strong>Reputation points</strong> to ensure continuity. No puppet data is sold to external kingdoms; it belongs solely to the Archive.</p>
+                    <p>Dossier wipes can be requested at any time via the official Support Domain.</p>
                 </div>
             </details>
         </section>
     </main>
 
     <footer class="footer-bar">
-        <span>SYSTEM VERSION: 2.0.4</span>
+        <span>&copy; 2026 SHADOW MILK PROJECT</span>
+        <span>STATUS: OPERATIONAL</span>
         <span>LOCATION: MULTIVERSE THEATER</span>
     </footer>
 </body>
