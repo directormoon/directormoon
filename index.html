@@ -11,7 +11,7 @@
             --primary: #a29bfe; 
             --accent: #6c5ce7; 
             --bg: #050208;
-            --glass: rgba(15, 10, 25, 0.94);
+            --glass: rgba(15, 10, 25, 0.96);
             --ancient: #ffeaa7;
             --beast: #ff7675;
         }
@@ -32,7 +32,7 @@
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: url('7(Special).jpg') center/cover no-repeat;
-            opacity: 0.25;
+            opacity: 0.2;
             z-index: -1;
         }
 
@@ -41,19 +41,15 @@
             flex-wrap: wrap;
             gap: 20px;
             padding: 20px;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: auto;
             width: 100%;
             box-sizing: border-box;
             justify-content: center;
         }
 
-        /* Perfil Original Restaurado */
-        .profile-sidebar {
-            flex: 1 1 320px;
-            max-width: 400px;
-        }
-
+        /* Profile Sidebar */
+        .profile-sidebar { flex: 1 1 320px; max-width: 380px; }
         .glass-card {
             background: var(--glass);
             border: 1px solid var(--accent);
@@ -62,117 +58,47 @@
             border-radius: 8px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.8);
         }
-
-        .avatar {
-            width: 130px;
-            height: 130px;
-            border: 2px solid var(--primary);
-            padding: 5px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
+        .avatar { width: 130px; height: 130px; border: 2px solid var(--primary); padding: 5px; border-radius: 50%; object-fit: cover; }
         h1 { font-size: 1.5rem; margin: 15px 0 5px; letter-spacing: 2px; color: white; }
         .badge { font-size: 0.65rem; color: var(--primary); background: rgba(108, 92, 231, 0.2); padding: 5px 10px; border-radius: 3px; display: inline-block; }
         .quote { font-size: 0.8rem; font-style: italic; opacity: 0.8; margin: 15px 0; line-height: 1.4; }
 
-        /* Social Icons (Quadrados arredondados e Proporção YT) */
-        .social-grid {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
+        .social-grid { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 20px; }
+        .social-icon img { width: 42px; height: 42px; transition: 0.3s ease; object-fit: contain; }
+        .rounded-square img { border-radius: 10px; background: rgba(255, 255, 255, 0.05); }
+        .social-icon:hover img { transform: translateY(-5px); filter: brightness(1.3); }
 
-        .social-icon img {
-            width: 42px;
-            height: 42px;
-            transition: 0.3s ease;
-            filter: brightness(1.2);
-            object-fit: contain;
-        }
+        /* Content Area */
+        .content-area { flex: 2 1 600px; }
+        .system-title { font-size: 1.4rem; border-left: 4px solid var(--accent); padding-left: 15px; margin-bottom: 20px; text-transform: uppercase; }
 
-        .rounded-square img {
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .social-icon:hover img {
-            transform: translateY(-5px);
-            filter: brightness(1.5);
-        }
-
-        /* Conteúdo das Gavetas */
-        .content-area {
-            flex: 2 1 500px;
-        }
-
-        .system-title {
-            font-size: 1.4rem;
-            border-left: 4px solid var(--accent);
-            padding-left: 15px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .drawer {
-            background: var(--glass);
-            border: 1px solid rgba(108, 92, 231, 0.3);
-            margin-bottom: 10px;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        summary {
-            padding: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(108, 92, 231, 0.1);
-        }
-
-        summary::after { content: "[+]"; color: var(--primary); font-size: 0.8rem; }
+        /* Drawers */
+        .drawer { background: var(--glass); border: 1px solid rgba(108, 92, 231, 0.3); margin-bottom: 12px; border-radius: 4px; overflow: hidden; }
+        summary { padding: 15px; cursor: pointer; font-weight: bold; list-style: none; display: flex; justify-content: space-between; align-items: center; background: rgba(108, 92, 231, 0.1); }
+        summary::after { content: "[+]"; color: var(--primary); }
         details[open] summary::after { content: "[-]"; }
 
-        .drawer-content {
-            padding: 20px;
-            border-top: 1px solid rgba(108, 92, 231, 0.2);
-            font-size: 0.85rem;
-            line-height: 1.6;
-        }
+        .drawer-content { padding: 20px; border-top: 1px solid rgba(108, 92, 231, 0.2); font-size: 0.85rem; line-height: 1.6; }
 
-        /* Dossier Styles */
-        .dossier-entry {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 4px;
-            padding: 10px;
-            margin-bottom: 12px;
-            border-left: 3px solid transparent;
-        }
+        /* Dossier Cards (Wiki Style) */
+        .dossier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .char-card { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 10px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .char-img { width: 80px; height: 80px; object-fit: contain; margin-bottom: 8px; filter: drop-shadow(0 0 5px rgba(255,255,255,0.2)); }
+        .char-name { font-size: 0.75rem; font-weight: bold; margin-bottom: 4px; text-transform: uppercase; }
+        .char-desc { font-size: 0.65rem; opacity: 0.7; line-height: 1.2; }
+        .ancient-text { color: var(--ancient); }
+        .beast-text { color: var(--beast); }
 
-        .entry-ancient { border-color: var(--ancient); }
-        .entry-beast { border-color: var(--beast); }
-        .label-ancient { color: var(--ancient); font-weight: bold; }
-        .label-beast { color: var(--beast); font-weight: bold; }
+        /* Text Lists */
+        .rule-list { padding-left: 18px; margin: 10px 0; }
+        .rule-list li { margin-bottom: 8px; }
+        strong { color: var(--primary); }
 
-        .footer-bar {
-            margin-top: auto;
-            background: var(--accent);
-            color: white;
-            font-size: 0.6rem;
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 20px;
-        }
+        .footer-bar { margin-top: auto; background: var(--accent); color: white; font-size: 0.6rem; display: flex; justify-content: space-between; padding: 10px 20px; }
 
         @media (max-width: 768px) {
-            .app-container { flex-direction: column; padding: 15px; }
-            .social-icon img { width: 38px; height: 38px; }
-            .footer-bar { flex-direction: column; text-align: center; gap: 8px; }
+            .app-container { flex-direction: column; }
+            .dossier-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -186,20 +112,11 @@
                 <h1>DIRECTOR MOON</h1>
                 <p class="badge">SOVEREIGN ID: 971381693971824700</p>
                 <p class="quote">"I don't just write code. I weave the strings of reality."</p>
-                
                 <div class="social-grid">
-                    <a href="https://discord.gg/trJb9jheUS" target="_blank" class="social-icon rounded-square">
-                        <img src="discord.png" alt="Discord">
-                    </a>
-                    <a href="https://youtube.com/@unknown-d8j4m?si=hz3em3P6DgcxcS1t" target="_blank" class="social-icon">
-                        <img src="youtube.png" alt="YouTube">
-                    </a>
-                    <a href="https://www.tiktok.com/@dirmoonofc?_r=1&_t=ZG-95DGepO4hxg" target="_blank" class="social-icon">
-                        <img src="tiktok.png" alt="TikTok">
-                    </a>
-                    <a href="https://www.roblox.com/users/1533939692/profile" target="_blank" class="social-icon rounded-square">
-                        <img src="roblox.png" alt="Roblox">
-                    </a>
+                    <a href="https://discord.gg/trJb9jheUS" target="_blank" class="social-icon rounded-square"><img src="discord.png" alt="Discord"></a>
+                    <a href="https://youtube.com/@unknown-d8j4m?si=hz3em3P6DgcxcS1t" target="_blank" class="social-icon"><img src="youtube.png" alt="YouTube"></a>
+                    <a href="https://www.tiktok.com/@dirmoonofc?_r=1&_t=ZG-95DGepO4hxg" target="_blank" class="social-icon"><img src="tiktok.png" alt="TikTok"></a>
+                    <a href="https://www.roblox.com/users/1533939692/profile" target="_blank" class="social-icon rounded-square"><img src="roblox.png" alt="Roblox"></a>
                 </div>
             </div>
         </aside>
@@ -208,72 +125,113 @@
             <h2 class="system-title">SHADOW MILK ARCHIVE</h2>
 
             <details class="drawer">
-                <summary>THE SOVEREIGN RECORDS (BEASTS & ANCIENTS)</summary>
+                <summary>ARCHIVE: THE ANCIENT HEROES</summary>
                 <div class="drawer-content">
-                    <div class="dossier-entry entry-ancient">
-                        <div><span class="label-ancient">PURE VANILLA</span> [ANCIENT]</div>
-                        <p>The light of the past. A king tethered to hope.</p>
-                    </div>
-                    <div class="dossier-entry entry-ancient">
-                        <div><span class="label-ancient">HOLLYBERRY</span> [ANCIENT]</div>
-                        <p>The shield of resolve. Strength that defies the theater.</p>
-                    </div>
-                    <div class="dossier-entry entry-ancient">
-                        <div><span class="label-ancient">DARK CACAO</span> [ANCIENT]</div>
-                        <p>The blade of sorrow. A heavy soul lost in the archives.</p>
-                    </div>
-                    <div class="dossier-entry entry-ancient">
-                        <div><span class="label-ancient">GOLDEN CHEESE</span> [ANCIENT]</div>
-                        <p>The wings of greed. A prop in my grand theater.</p>
-                    </div>
-                    <div class="dossier-entry entry-ancient">
-                        <div><span class="label-ancient">WHITE LILY</span> [ANCIENT]</div>
-                        <p>The ghost of memory. A tragic script rewritten.</p>
-                    </div>
-
-                    <div class="dossier-entry entry-beast">
-                        <div><span class="label-beast">SHADOW MILK</span> [THE BEAST]</div>
-                        <p>The Master of Deception. Director of the Eternal Theater.</p>
-                    </div>
-                    <div class="dossier-entry entry-beast">
-                        <div><span class="label-beast">MYSTIC FLOUR</span> [THE BEAST]</div>
-                        <p>The Beast of Apathy. Silence that ends all scripts.</p>
-                    </div>
-                    <div class="dossier-entry entry-beast">
-                        <div><span class="label-beast">BURNING SPICE</span> [THE BEAST]</div>
-                        <p>The Beast of Destruction. Fire that fuel the chaotic act.</p>
-                    </div>
-                    <div class="dossier-entry entry-beast">
-                        <div><span class="label-beast">ETERNAL SUGAR</span> [THE BEAST]</div>
-                        <p>The Beast of Indulgence. A sweet trap for puppets.</p>
-                    </div>
-                    <div class="dossier-entry entry-beast">
-                        <div><span class="label-beast">SILENT SALT</span> [THE BEAST]</div>
-                        <p>The Beast of Despair. The bitter end of every performance.</p>
+                    <div class="dossier-grid">
+                        <div class="char-card">
+                            <img src="https://static.wikia.nocookie.net/cookierunkingdom/images/f/f2/Pure_Vanilla_Cookie_Icon.png" class="char-img">
+                            <span class="char-name ancient-text">Pure Vanilla</span>
+                            <span class="char-desc">The first Ancient Hero. Bearer of the Enlightenment Soul Jam and founder of the Vanilla Kingdom.</span>
+                        </div>
+                        <div class="char-card">
+                            <img src="https://static.wikia.nocookie.net/cookierunkingdom/images/8/87/Hollyberry_Cookie_Icon.png" class="char-img">
+                            <span class="char-name ancient-text">Hollyberry</span>
+                            <span class="char-desc">A fearless warrior queen. Bearer of the Passion Soul Jam and founder of the Hollyberry Kingdom.</span>
+                        </div>
+                        <div class="char-card">
+                            <img src="https://static.wikia.nocookie.net/cookierunkingdom/images/5/52/Dark_Cacao_Cookie_Icon.png" class="char-img">
+                            <span class="char-name ancient-text">Dark Cacao</span>
+                            <span class="char-desc">The stoic King of the North. Bearer of the Resolution Soul Jam and protector of the Citadel.</span>
+                        </div>
+                        <div class="char-card">
+                            <img src="https://static.wikia.nocookie.net/cookierunkingdom/images/4/4e/Golden_Cheese_Cookie_Icon.png" class="char-img">
+                            <span class="char-name ancient-text">Golden Cheese</span>
+                            <span class="char-desc">The Sovereign of the Desert. Bearer of the Abundance Soul Jam and queen of the Golden City.</span>
+                        </div>
+                        <div class="char-card">
+                            <img src="https://static.wikia.nocookie.net/cookierunkingdom/images/4/4e/White_Lily_Cookie_Icon.png" class="char-img">
+                            <span class="char-name ancient-text">White Lily</span>
+                            <span class="char-desc">A seeker of truth. Bearer of the Liberty Soul Jam, whose fate is forever tied to Dark Enchantress.</span>
+                        </div>
                     </div>
                 </div>
             </details>
 
             <details class="drawer">
-                <summary>THE PLAYBOOK (TERMS)</summary>
+                <summary>ARCHIVE: THE BEAST YEAST</summary>
                 <div class="drawer-content">
-                    <p><strong>1. Performance:</strong> Sabotaging the Archive results in a permanent cut of your strings (Ban).</p>
-                    <p><strong>2. Sovereignty:</strong> The Director reserves the right to wipe any dossier.</p>
+                    <div class="dossier-grid">
+                        <div class="char-card">
+                            <img src="https://static.wikia.nocookie.net/cookierunkingdom/images/4/43/Shadow_Milk_Cookie_Icon.png" class="char-img">
+                            <span class="char-name beast-text">Shadow Milk</span>
+                            <span class="char-desc">The Beast of Deceit. The mastermind of the Eternal Theater who manipulate the truth like strings.</span>
+                        </div>
+                        <div class="char-card">
+                            <img src="https://static.wikia.nocookie.net/cookierunkingdom/images/8/80/Mystic_Flour_Cookie_Icon.png" class="char-img">
+                            <span class="char-name beast-text">Mystic Flour</span>
+                            <span class="char-desc">The Beast of Apathy. Her touch brings the end of all desire, leaving only the void of silence.</span>
+                        </div>
+                        <div class="char-card">
+                            <img src="https://static.wikia.nocookie.net/cookierunkingdom/images/b/b8/Burning_Spice_Cookie_Icon.png" class="char-img">
+                            <span class="char-name beast-text">Burning Spice</span>
+                            <span class="char-desc">The Beast of Destruction. A colossal force of uncontrollable rage and devastating flames.</span>
+                        </div>
+                        <div class="char-card">
+                            <img src="https://static.wikia.nocookie.net/cookierunkingdom/images/4/4c/Eternal_Sugar_Cookie_Icon.png" class="char-img">
+                            <span class="char-name beast-text">Eternal Sugar</span>
+                            <span class="char-desc">The Beast of Indulgence. She traps souls in a sweet, eternal dream of bliss and temptation.</span>
+                        </div>
+                        <div class="char-card">
+                            <img src="https://static.wikia.nocookie.net/cookierunkingdom/images/c/c2/Silent_Salt_Cookie_Icon.png" class="char-img">
+                            <span class="char-name beast-text">Silent Salt</span>
+                            <span class="char-desc">The Beast of Despair. A bitter presence that erodes the spirit until only salt remains.</span>
+                        </div>
+                    </div>
                 </div>
             </details>
 
             <details class="drawer">
-                <summary>THE RECORDS (PRIVACY)</summary>
+                <summary>THE THEATER PROTOCOLS (DISCORD RULES)</summary>
                 <div class="drawer-content">
-                    <p>We store Discord IDs and Economy Fragments. Data is used solely for the theatrical standing of your puppet.</p>
+                    <ul class="rule-list">
+                        <li><strong>I. Respect the Stage:</strong> Treat all actors and puppets with respect. No harassment or hate speech.</li>
+                        <li><strong>II. No Script Tampering:</strong> Spamming, raiding, or exploiting the server infrastructure is strictly forbidden.</li>
+                        <li><strong>III. SFW Performance:</strong> Keep the theater clean. NSFW content is not allowed in public rehearsals.</li>
+                        <li><strong>IV. Director's Word:</strong> Staff decisions are final. Obey the Director's strings at all times.</li>
+                        <li><strong>V. Advertising:</strong> No external links or promotions without the Director's express permission.</li>
+                    </ul>
                 </div>
             </details>
+
+            <details class="drawer">
+                <summary>TERMS OF SERVICE (TOS)</summary>
+                <div class="drawer-content">
+                    <p>By interacting with the <strong>Shadow Milk Archive</strong>, you agree to:</p>
+                    <ul class="rule-list">
+                        <li>The Director reserves the right to terminate any puppet's access (Ban) for violations of protocol.</li>
+                        <li>Users are responsible for any chaos caused by their own accounts.</li>
+                        <li>Automated scripts or "self-bots" that interact with the Archive are banned.</li>
+                        <li>Terms may be rewritten by the Director as the performance evolves.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="drawer">
+                <summary>PRIVACY POLICY</summary>
+                <div class="drawer-content">
+                    <p><strong>Data Collection:</strong> We collect Discord User IDs, Fragment Balances, and Server Interaction Logs to maintain game state.</p>
+                    <p><strong>Security:</strong> Your data is stored within our secure Theater Archives. We do not sell or share puppet data with external kingdoms.</p>
+                    <p><strong>Erasure:</strong> You may request a complete "Dossier Wipe" via our support channels at any time.</p>
+                </div>
+            </details>
+
         </section>
     </main>
 
     <footer class="footer-bar">
         <span>&copy; 2026 SHADOW MILK PROJECT</span>
+        <span>STATUS: SYSTEM STABLE</span>
         <span>LOCATION: MULTIVERSE THEATER</span>
     </footer>
 </body>
-</html>
+    </html>
