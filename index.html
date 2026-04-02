@@ -13,6 +13,8 @@
             --bg: #050208;
             --glass: rgba(15, 10, 25, 0.94);
             --glow: 0 0 10px rgba(162, 155, 254, 0.5);
+            --ancient: #ffeaa7; /* Gold for Ancients */
+            --beast: #ff7675;   /* Red for Beasts */
         }
 
         body {
@@ -47,7 +49,7 @@
             justify-content: center;
         }
 
-        /* Perfil */
+        /* Profile Sidebar */
         .profile-sidebar {
             flex: 1 1 320px;
             max-width: 400px;
@@ -60,7 +62,6 @@
             text-align: center;
             border-radius: 8px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.8);
-            position: relative;
         }
 
         .avatar {
@@ -75,25 +76,6 @@
 
         h1 { font-size: 1.5rem; margin: 15px 0 5px; letter-spacing: 2px; color: white; }
         
-        /* Efeito Glitch no Título principal */
-        h1:hover {
-            text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff;
-            animation: glitch 0.3s infinite;
-        }
-
-        @keyframes glitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-            100% { transform: translate(0); }
-        }
-
-        .badge { font-size: 0.65rem; color: var(--primary); background: rgba(108, 92, 231, 0.2); padding: 5px 10px; border-radius: 3px; display: inline-block; }
-        .quote { font-size: 0.8rem; font-style: italic; opacity: 0.8; margin: 15px 0; line-height: 1.4; }
-
-        /* Status Bar Pulsante */
         .status-container {
             display: flex;
             align-items: center;
@@ -102,12 +84,10 @@
             margin-bottom: 15px;
             font-size: 0.7rem;
             color: #00ff00;
-            text-shadow: 0 0 5px #00ff00;
         }
 
         .pulse-dot {
-            width: 7px;
-            height: 7px;
+            width: 7px; height: 7px;
             background-color: #00ff00;
             border-radius: 50%;
             animation: pulse-glow 2s infinite;
@@ -129,21 +109,15 @@
         }
 
         .social-icon img {
-            width: 42px;
-            height: 42px;
+            width: 42px; height: 42px;
             transition: 0.3s ease;
-            filter: brightness(1.2);
             object-fit: contain;
         }
 
         .rounded-square img { border-radius: 10px; background: rgba(255, 255, 255, 0.05); }
+        .social-icon:hover img { transform: translateY(-5px); filter: brightness(1.3); }
 
-        .social-icon:hover img {
-            transform: translateY(-5px) scale(1.1);
-            filter: brightness(1.5) drop-shadow(0 0 8px var(--primary));
-        }
-
-        /* Conteúdo Principal */
+        /* Content Area */
         .content-area {
             flex: 2 1 500px;
         }
@@ -153,7 +127,6 @@
             border-left: 4px solid var(--accent);
             padding-left: 15px;
             margin-bottom: 20px;
-            text-transform: uppercase;
         }
 
         .drawer {
@@ -162,10 +135,7 @@
             margin-bottom: 10px;
             border-radius: 4px;
             overflow: hidden;
-            transition: 0.3s;
         }
-
-        .drawer:hover { border-color: var(--primary); }
 
         summary {
             padding: 15px;
@@ -188,22 +158,28 @@
             line-height: 1.6;
         }
 
-        .cmd-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px dotted rgba(255,255,255,0.1);
-        }
-        
-        code { color: var(--primary); font-weight: bold; }
-
-        .beast-tag {
-            background: rgba(162, 155, 254, 0.1);
+        /* Dossier Styles */
+        .dossier-entry {
+            background: rgba(0, 0, 0, 0.3);
             border-radius: 4px;
             padding: 10px;
-            margin-bottom: 10px;
-            border-left: 2px solid var(--primary);
+            margin-bottom: 12px;
+            border-left: 3px solid transparent;
         }
+
+        .entry-ancient { border-color: var(--ancient); }
+        .entry-beast { border-color: var(--beast); }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        .label-ancient { color: var(--ancient); }
+        .label-beast { color: var(--beast); }
 
         .footer-bar {
             margin-top: auto;
@@ -216,9 +192,8 @@
         }
 
         @media (max-width: 768px) {
-            .app-container { flex-direction: column; padding: 15px; padding-bottom: 80px; }
-            .social-icon img { width: 38px; height: 38px; }
-            .footer-bar { flex-direction: column; text-align: center; gap: 8px; font-size: 0.5rem; }
+            .app-container { flex-direction: column; }
+            .footer-bar { flex-direction: column; text-align: center; gap: 5px; }
         }
     </style>
 </head>
@@ -230,13 +205,13 @@
             <div class="glass-card">
                 <div class="status-container">
                     <div class="pulse-dot"></div>
-                    <span>SYSTEM ONLINE [V.2.0.4]</span>
+                    <span>DIRECTOR CONNECTED [V.2.0.4]</span>
                 </div>
                 
                 <img src="sm.png" alt="Director Moon" class="avatar">
                 <h1>DIRECTOR MOON</h1>
                 <p class="badge">SOVEREIGN ID: 971381693971824700</p>
-                <p class="quote">"I don't just write code. I weave the strings of reality."</p>
+                <p class="quote">"The stage is set. The strings are ready. Use the bot to see my scripts."</p>
                 
                 <div class="social-grid">
                     <a href="https://discord.gg/trJb9jheUS" target="_blank" class="social-icon rounded-square"><img src="discord.png" alt="Discord"></a>
@@ -250,35 +225,58 @@
         <section class="content-area">
             <h2 class="system-title">SHADOW MILK ARCHIVE</h2>
 
-            <details class="drawer" open>
-                <summary>SYSTEM MODULES (CORE)</summary>
-                <div class="drawer-content">
-                    <div class="cmd-row"><code>/shadowmilk</code> <span>Summon the master</span></div>
-                    <div class="cmd-row"><code>/mysticflour</code> <span>Dossier: Beast of Apathy</span></div>
-                    <div class="cmd-row"><code>/burningspice</code> <span>Dossier: Beast of Destruction</span></div>
-                    <div class="cmd-row"><code>/marry</code> <span>Bind two puppets</span></div>
-                    <div class="cmd-row"><code>/nuke</code> <span>Erase stage dialogue</span></div>
-                    <div class="cmd-row"><code>/stats</code> <span>System Performance</span></div>
-                </div>
-            </details>
-
             <details class="drawer">
-                <summary>THE BEASTS (LORE RECORDS)</summary>
+                <summary>THE SOVEREIGN RECORDS (BEASTS & ANCIENTS)</summary>
                 <div class="drawer-content">
-                    <div class="beast-tag">
-                        <strong>MYSTIC FLOUR:</strong> The Beast of Apathy. Her silence is the end of all strings.
+                    
+                    <div class="dossier-entry entry-ancient">
+                        <div class="entry-header"><span class="label-ancient">PURE VANILLA</span> <span>[ANCIENT]</span></div>
+                        <p>The light of the past. A king whose strings are tethered to hope.</p>
                     </div>
-                    <div class="beast-tag">
-                        <strong>BURNING SPICE:</strong> The Beast of Destruction. The fire that consumes the script.
+                    <div class="dossier-entry entry-ancient">
+                        <div class="entry-header"><span class="label-ancient">HOLLYBERRY</span> <span>[ANCIENT]</span></div>
+                        <p>The shield of resolve. Strength that defies the Director's whims.</p>
                     </div>
-                    <p style="font-size: 0.75rem; opacity: 0.6;">*More dossiers pending extraction from the multiverse archive.</p>
+                    <div class="dossier-entry entry-ancient">
+                        <div class="entry-header"><span class="label-ancient">DARK CACAO</span> <span>[ANCIENT]</span></div>
+                        <p>The blade of sorrow. A heavy soul lost in the multiverse archives.</p>
+                    </div>
+                    <div class="dossier-entry entry-ancient">
+                        <div class="entry-header"><span class="label-ancient">GOLDEN CHEESE</span> <span>[ANCIENT]</span></div>
+                        <p>The wings of greed. Her wealth is but a prop in my theater.</p>
+                    </div>
+                    <div class="dossier-entry entry-ancient">
+                        <div class="entry-header"><span class="label-ancient">WHITE LILY</span> <span>[ANCIENT]</span></div>
+                        <p>The ghost of memory. A tragic script rewritten many times.</p>
+                    </div>
+
+                    <div class="dossier-entry entry-beast">
+                        <div class="entry-header"><span class="label-beast">SHADOW MILK</span> <span>[THE BEAST]</span></div>
+                        <p>The Master of Deception. The Director of the Eternal Theater.</p>
+                    </div>
+                    <div class="dossier-entry entry-beast">
+                        <div class="entry-header"><span class="label-beast">MYSTIC FLOUR</span> <span>[THE BEAST]</span></div>
+                        <p>The Beast of Apathy. Her silence turns every script to dust.</p>
+                    </div>
+                    <div class="dossier-entry entry-beast">
+                        <div class="entry-header"><span class="label-beast">BURNING SPICE</span> <span>[THE BEAST]</span></div>
+                        <p>The Beast of Destruction. The fire that fuels the chaotic act.</p>
+                    </div>
+                    <div class="dossier-entry entry-beast">
+                        <div class="entry-header"><span class="label-beast">ETERNAL SUGAR</span> <span>[THE BEAST]</span></div>
+                        <p>The Beast of Indulgence. A sweet trap for unsuspecting puppets.</p>
+                    </div>
+                    <div class="dossier-entry entry-beast">
+                        <div class="entry-header"><span class="label-beast">SILENT SALT</span> <span>[THE BEAST]</span></div>
+                        <p>The Beast of Despair. The bitter end of every performance.</p>
+                    </div>
                 </div>
             </details>
 
             <details class="drawer">
                 <summary>THE PLAYBOOK (TERMS)</summary>
                 <div class="drawer-content">
-                    <p><strong>1. Performance:</strong> No exploitation permitted. Sabotaging the Archive results in a permanent ban.</p>
+                    <p><strong>1. Performance:</strong> Sabotaging the Archive results in a permanent cut of your strings (Ban).</p>
                     <p><strong>2. Sovereignty:</strong> The Director reserves the right to wipe any dossier.</p>
                 </div>
             </details>
@@ -286,7 +284,7 @@
             <details class="drawer">
                 <summary>THE RECORDS (PRIVACY)</summary>
                 <div class="drawer-content">
-                    <p>We store Discord IDs and Economy Fragments. Data is used solely for the bot's theatrical systems.</p>
+                    <p>We store Discord IDs and Economy Fragments. Data is used solely for the theatrical standing of your puppet.</p>
                 </div>
             </details>
         </section>
@@ -297,4 +295,4 @@
         <span>LOCATION: MULTIVERSE THEATER</span>
     </footer>
 </body>
-</html>
+                                                      </html>
