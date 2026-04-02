@@ -70,14 +70,26 @@
 
         /* Content Area */
         .content-area { flex: 2 1 600px; }
-        .section-header {
+        
+        /* Estilo que era do Shadow Milk Bot (Destaque) */
+        .main-highlight-title { 
+            font-size: 1.4rem; 
+            border-left: 4px solid var(--accent); 
+            padding-left: 15px; 
+            margin-bottom: 5px; 
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* Estilo que era dos outros títulos (Subtítulo discreto) */
+        .sub-header-style {
             font-size: 0.85rem;
             color: var(--primary);
             letter-spacing: 1px;
-            margin-bottom: 5px;
+            margin-bottom: 25px;
             opacity: 0.8;
+            display: block;
         }
-        .system-title { font-size: 1.4rem; border-left: 4px solid var(--accent); padding-left: 15px; margin-bottom: 25px; text-transform: uppercase; }
 
         /* Drawers */
         .drawer { background: var(--glass); border: 1px solid rgba(108, 92, 231, 0.3); margin-bottom: 12px; border-radius: 4px; overflow: hidden; }
@@ -129,8 +141,8 @@
 
         <section class="content-area">
             <header>
-                <p class="section-header">ORIGIN OF MY CREATION AND OTHER CHARACTERS</p>
-                <h2 class="system-title">SHADOW MILK BOT</h2>
+                <h2 class="main-highlight-title">ORIGIN OF MY CREATION AND OTHER CHARACTERS</h2>
+                <span class="sub-header-style">SHADOW MILK BOT</span>
             </header>
 
             <details class="drawer">
@@ -138,27 +150,27 @@
                 <div class="drawer-content">
                     <div class="dossier-grid">
                         <div class="char-card">
-                            <img src="pv.png" class="char-img">
+                            <img src="purevanilla.png" class="char-img">
                             <span class="char-name ancient-text">Pure Vanilla</span>
                             <span class="char-desc">The first Ancient Hero and founder of the Vanilla Kingdom. Bearer of the Enlightenment Soul Jam.</span>
                         </div>
                         <div class="char-card">
-                            <img src="hb.png" class="char-img">
+                            <img src="hollyberry.png" class="char-img">
                             <span class="char-name ancient-text">Hollyberry</span>
                             <span class="char-desc">Fearless queen and founder of the Hollyberry Kingdom. Bearer of the Passion Soul Jam.</span>
                         </div>
                         <div class="char-card">
-                            <img src="dc.png" class="char-img">
+                            <img src="darkcacao.png" class="char-img">
                             <span class="char-name ancient-text">Dark Cacao</span>
                             <span class="char-desc">King of the Dark Cacao Kingdom. Bearer of the Resolution Soul Jam, protector of the Snowy Citadel.</span>
                         </div>
                         <div class="char-card">
-                            <img src="gc.png" class="char-img">
+                            <img src="goldencheese.png" class="char-img">
                             <span class="char-name ancient-text">Golden Cheese</span>
                             <span class="char-desc">Sovereign of the Golden City. Bearer of the Abundance Soul Jam, ruling the desert with absolute radiance.</span>
                         </div>
                         <div class="char-card">
-                            <img src="wl.png" class="char-img">
+                            <img src="whitelily.png" class="char-img">
                             <span class="char-name ancient-text">White Lily</span>
                             <span class="char-desc">A seeker of truth and bearer of the Liberty Soul Jam. Her destiny remains eternally tied to the darkness.</span>
                         </div>
@@ -171,27 +183,27 @@
                 <div class="drawer-content">
                     <div class="dossier-grid">
                         <div class="char-card">
-                            <img src="sm_beast.png" class="char-img">
+                            <img src="shadowmilk.png" class="char-img">
                             <span class="char-name beast-text">Shadow Milk</span>
                             <span class="char-desc">The Beast of Deceit. Master of the Eternal Theater who pulls the strings of truth and deception.</span>
                         </div>
                         <div class="char-card">
-                            <img src="mf.png" class="char-img">
+                            <img src="mysticflour.png" class="char-img">
                             <span class="char-name beast-text">Mystic Flour</span>
                             <span class="char-desc">The Beast of Apathy. Her touch consumes desire and hope, leaving only silence and dust behind.</span>
                         </div>
                         <div class="char-card">
-                            <img src="bs.png" class="char-img">
+                            <img src="burningspice.png" class="char-img">
                             <span class="char-name beast-text">Burning Spice</span>
                             <span class="char-desc">The Beast of Destruction. A colossal force of uncontrollable rage and devastating flames.</span>
                         </div>
                         <div class="char-card">
-                            <img src="es.png" class="char-img">
+                            <img src="eternalsugar.png" class="char-img">
                             <span class="char-name beast-text">Eternal Sugar</span>
                             <span class="char-desc">The Beast of Indulgence. Traps souls in a sweet, eternal dream where temptation becomes a cage.</span>
                         </div>
                         <div class="char-card">
-                            <img src="ss.png" class="char-img">
+                            <img src="silentsalt.png" class="char-img">
                             <span class="char-name beast-text">Silent Salt</span>
                             <span class="char-desc">The Beast of Despair. A bitter presence that erodes the spirit until only salt remains.</span>
                         </div>
@@ -199,7 +211,8 @@
                 </div>
             </details>
 
-            <p class="section-header" style="margin-top: 30px;">RULES, TERMS AND PRIVACY</p>
+            <h2 class="main-highlight-title" style="margin-top: 35px;">RULES, TERMS AND PRIVACY</h2>
+            <span class="sub-header-style">GOVERNANCE & PROTOCOLS</span>
 
             <details class="drawer">
                 <summary>THE THEATER PROTOCOLS (DISCORD RULES)</summary>
@@ -243,4 +256,4 @@
         <span>STATUS: SYSTEM STABLE</span>
     </footer>
 </body>
-                                                      </html>
+</html>
