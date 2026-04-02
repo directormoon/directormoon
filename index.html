@@ -74,7 +74,7 @@
         .badge { font-size: 0.65rem; color: var(--primary); background: rgba(108, 92, 231, 0.2); padding: 5px 10px; border-radius: 3px; display: inline-block; }
         .quote { font-size: 0.8rem; font-style: italic; opacity: 0.8; margin: 15px 0; line-height: 1.4; }
 
-        /* Social Icons - Nova Linha com 4 Ícones */
+        /* Social Icons */
         .social-grid {
             display: flex;
             justify-content: center;
@@ -84,15 +84,17 @@
         }
 
         .social-icon img {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             transition: 0.3s ease;
             filter: brightness(1.2);
+            object-fit: contain; /* Garante que o YT não fique achatado */
         }
 
-        /* Arredondamento específico para Discord e Roblox */
-        .round-icon img {
-            border-radius: 50%;
+        /* Quadrados com cantos arredondados para Discord e Roblox */
+        .rounded-square img {
+            border-radius: 10px; 
+            background: rgba(255, 255, 255, 0.05); /* Leve fundo para destacar o formato */
         }
 
         .social-icon:hover img {
@@ -164,12 +166,10 @@
             letter-spacing: 1px;
         }
 
-        /* Mobile Adjustments */
         @media (max-width: 768px) {
             .app-container { flex-direction: column; padding: 15px; padding-bottom: 80px; }
             .profile-sidebar { max-width: 100%; }
-            .social-grid { gap: 10px; }
-            .social-icon img { width: 35px; height: 35px; }
+            .social-icon img { width: 38px; height: 38px; }
             .footer-bar { flex-direction: column; text-align: center; gap: 8px; font-size: 0.5rem; }
         }
     </style>
@@ -186,7 +186,7 @@
                 <p class="quote">"I don't just write code. I weave the strings of reality."</p>
                 
                 <div class="social-grid">
-                    <a href="https://discord.gg/trJb9jheUS" target="_blank" class="social-icon round-icon">
+                    <a href="https://discord.gg/trJb9jheUS" target="_blank" class="social-icon rounded-square">
                         <img src="discord.png" alt="Discord">
                     </a>
                     
@@ -198,7 +198,7 @@
                         <img src="tiktok.png" alt="TikTok">
                     </a>
 
-                    <a href="https://www.roblox.com/users/1533939692/profile" target="_blank" class="social-icon round-icon">
+                    <a href="https://www.roblox.com/users/1533939692/profile" target="_blank" class="social-icon rounded-square">
                         <img src="roblox.png" alt="Roblox">
                     </a>
                 </div>
@@ -209,7 +209,7 @@
             <h2 class="system-title">SHADOW MILK ARCHIVE</h2>
 
             <details class="drawer" open>
-                <summary>KEY SCRIPTS (COMMANDS)</summary>
+                <summary>SYSTEM MODULES (CORE)</summary>
                 <div class="drawer-content">
                     <div class="cmd-row"><code>/shadowmilk</code> <span>Summon the master</span></div>
                     <div class="cmd-row"><code>/mysticflour</code> <span>Dossier: Beast of Apathy</span></div>
@@ -243,4 +243,4 @@
         <span>LOCATION: MULTIVERSE THEATER</span>
     </footer>
 </body>
-    </html>
+</html>
