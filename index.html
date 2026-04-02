@@ -12,9 +12,8 @@
             --accent: #6c5ce7; 
             --bg: #050208;
             --glass: rgba(15, 10, 25, 0.94);
-            --glow: 0 0 10px rgba(162, 155, 254, 0.5);
-            --ancient: #ffeaa7; /* Gold for Ancients */
-            --beast: #ff7675;   /* Red for Beasts */
+            --ancient: #ffeaa7;
+            --beast: #ff7675;
         }
 
         body {
@@ -49,7 +48,7 @@
             justify-content: center;
         }
 
-        /* Profile Sidebar */
+        /* Perfil Original Restaurado */
         .profile-sidebar {
             flex: 1 1 320px;
             max-width: 400px;
@@ -71,35 +70,13 @@
             padding: 5px;
             border-radius: 50%;
             object-fit: cover;
-            box-shadow: var(--glow);
         }
 
         h1 { font-size: 1.5rem; margin: 15px 0 5px; letter-spacing: 2px; color: white; }
-        
-        .status-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 15px;
-            font-size: 0.7rem;
-            color: #00ff00;
-        }
+        .badge { font-size: 0.65rem; color: var(--primary); background: rgba(108, 92, 231, 0.2); padding: 5px 10px; border-radius: 3px; display: inline-block; }
+        .quote { font-size: 0.8rem; font-style: italic; opacity: 0.8; margin: 15px 0; line-height: 1.4; }
 
-        .pulse-dot {
-            width: 7px; height: 7px;
-            background-color: #00ff00;
-            border-radius: 50%;
-            animation: pulse-glow 2s infinite;
-        }
-
-        @keyframes pulse-glow {
-            0% { opacity: 0.4; transform: scale(0.9); }
-            50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 10px #00ff00; }
-            100% { opacity: 0.4; transform: scale(0.9); }
-        }
-
-        /* Social Icons */
+        /* Social Icons (Quadrados arredondados e Proporção YT) */
         .social-grid {
             display: flex;
             justify-content: center;
@@ -109,15 +86,24 @@
         }
 
         .social-icon img {
-            width: 42px; height: 42px;
+            width: 42px;
+            height: 42px;
             transition: 0.3s ease;
+            filter: brightness(1.2);
             object-fit: contain;
         }
 
-        .rounded-square img { border-radius: 10px; background: rgba(255, 255, 255, 0.05); }
-        .social-icon:hover img { transform: translateY(-5px); filter: brightness(1.3); }
+        .rounded-square img {
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+        }
 
-        /* Content Area */
+        .social-icon:hover img {
+            transform: translateY(-5px);
+            filter: brightness(1.5);
+        }
+
+        /* Conteúdo das Gavetas */
         .content-area {
             flex: 2 1 500px;
         }
@@ -127,6 +113,7 @@
             border-left: 4px solid var(--accent);
             padding-left: 15px;
             margin-bottom: 20px;
+            text-transform: uppercase;
         }
 
         .drawer {
@@ -169,17 +156,8 @@
 
         .entry-ancient { border-color: var(--ancient); }
         .entry-beast { border-color: var(--beast); }
-
-        .entry-header {
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-        }
-
-        .label-ancient { color: var(--ancient); }
-        .label-beast { color: var(--beast); }
+        .label-ancient { color: var(--ancient); font-weight: bold; }
+        .label-beast { color: var(--beast); font-weight: bold; }
 
         .footer-bar {
             margin-top: auto;
@@ -192,8 +170,9 @@
         }
 
         @media (max-width: 768px) {
-            .app-container { flex-direction: column; }
-            .footer-bar { flex-direction: column; text-align: center; gap: 5px; }
+            .app-container { flex-direction: column; padding: 15px; }
+            .social-icon img { width: 38px; height: 38px; }
+            .footer-bar { flex-direction: column; text-align: center; gap: 8px; }
         }
     </style>
 </head>
@@ -203,21 +182,24 @@
     <main class="app-container">
         <aside class="profile-sidebar">
             <div class="glass-card">
-                <div class="status-container">
-                    <div class="pulse-dot"></div>
-                    <span>DIRECTOR CONNECTED [V.2.0.4]</span>
-                </div>
-                
                 <img src="sm.png" alt="Director Moon" class="avatar">
                 <h1>DIRECTOR MOON</h1>
                 <p class="badge">SOVEREIGN ID: 971381693971824700</p>
-                <p class="quote">"The stage is set. The strings are ready. Use the bot to see my scripts."</p>
+                <p class="quote">"I don't just write code. I weave the strings of reality."</p>
                 
                 <div class="social-grid">
-                    <a href="https://discord.gg/trJb9jheUS" target="_blank" class="social-icon rounded-square"><img src="discord.png" alt="Discord"></a>
-                    <a href="https://youtube.com/@unknown-d8j4m?si=hz3em3P6DgcxcS1t" target="_blank" class="social-icon"><img src="youtube.png" alt="YouTube"></a>
-                    <a href="https://www.tiktok.com/@dirmoonofc?_r=1&_t=ZG-95DGepO4hxg" target="_blank" class="social-icon"><img src="tiktok.png" alt="TikTok"></a>
-                    <a href="https://www.roblox.com/users/1533939692/profile" target="_blank" class="social-icon rounded-square"><img src="roblox.png" alt="Roblox"></a>
+                    <a href="https://discord.gg/trJb9jheUS" target="_blank" class="social-icon rounded-square">
+                        <img src="discord.png" alt="Discord">
+                    </a>
+                    <a href="https://youtube.com/@unknown-d8j4m?si=hz3em3P6DgcxcS1t" target="_blank" class="social-icon">
+                        <img src="youtube.png" alt="YouTube">
+                    </a>
+                    <a href="https://www.tiktok.com/@dirmoonofc?_r=1&_t=ZG-95DGepO4hxg" target="_blank" class="social-icon">
+                        <img src="tiktok.png" alt="TikTok">
+                    </a>
+                    <a href="https://www.roblox.com/users/1533939692/profile" target="_blank" class="social-icon rounded-square">
+                        <img src="roblox.png" alt="Roblox">
+                    </a>
                 </div>
             </div>
         </aside>
@@ -228,46 +210,45 @@
             <details class="drawer">
                 <summary>THE SOVEREIGN RECORDS (BEASTS & ANCIENTS)</summary>
                 <div class="drawer-content">
-                    
                     <div class="dossier-entry entry-ancient">
-                        <div class="entry-header"><span class="label-ancient">PURE VANILLA</span> <span>[ANCIENT]</span></div>
-                        <p>The light of the past. A king whose strings are tethered to hope.</p>
+                        <div><span class="label-ancient">PURE VANILLA</span> [ANCIENT]</div>
+                        <p>The light of the past. A king tethered to hope.</p>
                     </div>
                     <div class="dossier-entry entry-ancient">
-                        <div class="entry-header"><span class="label-ancient">HOLLYBERRY</span> <span>[ANCIENT]</span></div>
-                        <p>The shield of resolve. Strength that defies the Director's whims.</p>
+                        <div><span class="label-ancient">HOLLYBERRY</span> [ANCIENT]</div>
+                        <p>The shield of resolve. Strength that defies the theater.</p>
                     </div>
                     <div class="dossier-entry entry-ancient">
-                        <div class="entry-header"><span class="label-ancient">DARK CACAO</span> <span>[ANCIENT]</span></div>
-                        <p>The blade of sorrow. A heavy soul lost in the multiverse archives.</p>
+                        <div><span class="label-ancient">DARK CACAO</span> [ANCIENT]</div>
+                        <p>The blade of sorrow. A heavy soul lost in the archives.</p>
                     </div>
                     <div class="dossier-entry entry-ancient">
-                        <div class="entry-header"><span class="label-ancient">GOLDEN CHEESE</span> <span>[ANCIENT]</span></div>
-                        <p>The wings of greed. Her wealth is but a prop in my theater.</p>
+                        <div><span class="label-ancient">GOLDEN CHEESE</span> [ANCIENT]</div>
+                        <p>The wings of greed. A prop in my grand theater.</p>
                     </div>
                     <div class="dossier-entry entry-ancient">
-                        <div class="entry-header"><span class="label-ancient">WHITE LILY</span> <span>[ANCIENT]</span></div>
-                        <p>The ghost of memory. A tragic script rewritten many times.</p>
+                        <div><span class="label-ancient">WHITE LILY</span> [ANCIENT]</div>
+                        <p>The ghost of memory. A tragic script rewritten.</p>
                     </div>
 
                     <div class="dossier-entry entry-beast">
-                        <div class="entry-header"><span class="label-beast">SHADOW MILK</span> <span>[THE BEAST]</span></div>
-                        <p>The Master of Deception. The Director of the Eternal Theater.</p>
+                        <div><span class="label-beast">SHADOW MILK</span> [THE BEAST]</div>
+                        <p>The Master of Deception. Director of the Eternal Theater.</p>
                     </div>
                     <div class="dossier-entry entry-beast">
-                        <div class="entry-header"><span class="label-beast">MYSTIC FLOUR</span> <span>[THE BEAST]</span></div>
-                        <p>The Beast of Apathy. Her silence turns every script to dust.</p>
+                        <div><span class="label-beast">MYSTIC FLOUR</span> [THE BEAST]</div>
+                        <p>The Beast of Apathy. Silence that ends all scripts.</p>
                     </div>
                     <div class="dossier-entry entry-beast">
-                        <div class="entry-header"><span class="label-beast">BURNING SPICE</span> <span>[THE BEAST]</span></div>
-                        <p>The Beast of Destruction. The fire that fuels the chaotic act.</p>
+                        <div><span class="label-beast">BURNING SPICE</span> [THE BEAST]</div>
+                        <p>The Beast of Destruction. Fire that fuel the chaotic act.</p>
                     </div>
                     <div class="dossier-entry entry-beast">
-                        <div class="entry-header"><span class="label-beast">ETERNAL SUGAR</span> <span>[THE BEAST]</span></div>
-                        <p>The Beast of Indulgence. A sweet trap for unsuspecting puppets.</p>
+                        <div><span class="label-beast">ETERNAL SUGAR</span> [THE BEAST]</div>
+                        <p>The Beast of Indulgence. A sweet trap for puppets.</p>
                     </div>
                     <div class="dossier-entry entry-beast">
-                        <div class="entry-header"><span class="label-beast">SILENT SALT</span> <span>[THE BEAST]</span></div>
+                        <div><span class="label-beast">SILENT SALT</span> [THE BEAST]</div>
                         <p>The Beast of Despair. The bitter end of every performance.</p>
                     </div>
                 </div>
@@ -295,4 +276,4 @@
         <span>LOCATION: MULTIVERSE THEATER</span>
     </footer>
 </body>
-                                                      </html>
+</html>
