@@ -45,10 +45,16 @@
             min-height: 100vh;
         }
 
+        /* FUNDO CORRIGIDO */
         .bg-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: url('7(special).jpg') center/cover no-repeat;
-            opacity: 0.15; z-index: -1;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: linear-gradient(rgba(5, 2, 8, 0.7), rgba(5, 2, 8, 0.7)), url('7(special).jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            z-index: -1;
         }
 
         /* Ticker */
@@ -56,6 +62,7 @@
             width: 100%; background: rgba(108, 92, 231, 0.2);
             border-bottom: 1px solid var(--accent);
             overflow: hidden; white-space: nowrap; padding: 8px 0;
+            z-index: 10;
         }
         .ticker-move {
             display: inline-block; animation: ticker 15s linear infinite;
@@ -65,76 +72,88 @@
         @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
         .app-container {
-            display: flex; flex-wrap: wrap; gap: 20px; padding: 20px;
-            max-width: 1200px; margin: auto; width: 100%; box-sizing: border-box;
-            justify-content: center;
+            display: flex; flex-wrap: wrap; gap: 25px; padding: 30px;
+            max-width: 1300px; margin: auto; width: 100%; box-sizing: border-box;
+            z-index: 1;
         }
 
-        /* Sidebar */
+        /* Profile Sidebar (Original Style) */
         .profile-sidebar { flex: 1 1 320px; max-width: 380px; }
         .glass-card {
-            background: var(--glass); border: 1px solid var(--accent);
-            padding: 25px; text-align: center; border-radius: 8px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.8);
+            background: var(--glass); 
+            border: 1px solid var(--accent);
+            padding: 30px; text-align: center; border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.9);
+            position: sticky; top: 20px;
         }
-        .avatar { width: 130px; height: 130px; border: 2px solid var(--primary); padding: 5px; border-radius: 50%; object-fit: cover; }
-        h1 { font-size: 1.5rem; margin: 15px 0 5px; letter-spacing: 2px; color: white; }
-        .badge { font-size: 0.65rem; color: var(--primary); background: rgba(108, 92, 231, 0.2); padding: 5px 10px; border-radius: 3px; display: inline-block; }
+        .avatar { width: 150px; height: 150px; border: 3px solid var(--primary); padding: 5px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; }
+        h1 { font-size: 1.6rem; margin: 10px 0; letter-spacing: 3px; color: white; text-transform: uppercase; }
+        .badge { font-size: 0.65rem; color: var(--primary); background: rgba(108, 92, 231, 0.2); padding: 6px 12px; border-radius: 4px; display: inline-block; border: 1px solid rgba(162, 155, 254, 0.3); }
         
         .terminal-box {
-            margin-top: 20px; background: var(--terminal-bg);
-            border: 1px solid rgba(162, 155, 254, 0.3); border-radius: 4px;
-            padding: 12px; text-align: left; font-size: 0.65rem; color: var(--primary); min-height: 60px;
+            margin-top: 25px; background: var(--terminal-bg);
+            border: 1px solid rgba(162, 155, 254, 0.3); border-radius: 6px;
+            padding: 15px; text-align: left; font-size: 0.7rem; color: var(--primary); min-height: 80px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
         }
         .audio-control {
             margin-top: 15px; background: rgba(162, 155, 254, 0.1);
             border: 1px solid var(--accent); color: var(--primary);
-            padding: 10px; border-radius: 4px; font-size: 0.7rem;
-            cursor: pointer; transition: 0.3s; width: 100%;
-            font-family: 'JetBrains Mono', monospace;
+            padding: 12px; border-radius: 6px; font-size: 0.7rem;
+            cursor: pointer; transition: 0.3s; width: 100%; font-weight: bold;
         }
-        .audio-control:hover { background: var(--accent); color: white; }
+        .audio-control:hover { background: var(--accent); color: white; box-shadow: 0 0 15px var(--accent); }
 
-        /* Bot Spotlight */
-        .bot-spotlight {
-            background: linear-gradient(90deg, rgba(108, 92, 231, 0.1), rgba(0,0,0,0.6));
-            border: 1px solid var(--accent); border-radius: 8px;
-            padding: 20px; margin-bottom: 30px;
-            display: flex; align-items: center; gap: 20px;
-        }
-        .bot-avatar-small { width: 75px; height: 75px; border-radius: 50%; border: 2px solid var(--primary); }
-        .invite-btn {
-            background: var(--accent); color: white; text-decoration: none;
-            padding: 10px 20px; border-radius: 4px; font-size: 0.8rem;
-            font-weight: bold; transition: 0.3s;
-        }
+        .social-grid { display: flex; justify-content: center; gap: 20px; margin-top: 25px; }
+        .social-grid img { width: 38px; transition: 0.3s; filter: drop-shadow(0 0 5px var(--accent)); }
+        .social-grid img:hover { transform: scale(1.2); filter: brightness(1.2); }
 
         /* Content Area */
         .content-area { flex: 2 1 600px; }
-        .main-highlight-title { font-size: 1.4rem; border-left: 4px solid var(--accent); padding-left: 15px; margin-bottom: 5px; text-transform: uppercase; font-weight: bold; }
-        .sub-header-style { font-size: 0.85rem; color: var(--primary); letter-spacing: 1px; margin-bottom: 25px; opacity: 0.8; display: block; }
-
-        .drawer { background: var(--glass); border: 1px solid rgba(108, 92, 231, 0.3); margin-bottom: 12px; border-radius: 4px; overflow: hidden; }
-        summary { padding: 15px; cursor: pointer; font-weight: bold; display: flex; justify-content: space-between; background: rgba(108, 92, 231, 0.1); }
         
-        .dossier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 20px; }
-        .char-card { 
-            background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05);
-            padding: 15px; border-radius: 6px; text-align: center; transition: 0.3s;
+        /* Bot Spotlight */
+        .bot-spotlight {
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.2), rgba(15, 10, 25, 0.9));
+            border: 1px solid var(--accent); border-radius: 12px;
+            padding: 25px; margin-bottom: 40px;
+            display: flex; align-items: center; gap: 25px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
         }
-        .char-card:hover { border-color: var(--accent); transform: translateY(-5px); }
-        .char-img { width: 80px; height: 80px; object-fit: contain; margin-bottom: 10px; }
-        .ancient-text { color: var(--ancient); }
-        .beast-text { color: var(--beast); }
+        .bot-avatar-small { width: 90px; height: 90px; border-radius: 50%; border: 2px solid var(--primary); box-shadow: 0 0 15px var(--accent); }
+        .invite-btn {
+            background: var(--accent); color: white; text-decoration: none;
+            padding: 12px 25px; border-radius: 6px; font-size: 0.85rem;
+            font-weight: bold; transition: 0.3s; border: 1px solid transparent;
+        }
+        .invite-btn:hover { background: transparent; border-color: var(--accent); color: var(--primary); box-shadow: 0 0 20px var(--accent); }
 
-        .rule-list { padding-left: 18px; list-style-type: square; font-size: 0.8rem; }
-        .footer-bar { margin-top: auto; background: var(--accent); color: white; font-size: 0.6rem; display: flex; justify-content: space-between; padding: 10px 20px; }
+        .main-highlight-title { font-size: 1.5rem; border-left: 5px solid var(--accent); padding-left: 20px; margin-bottom: 5px; text-transform: uppercase; font-weight: bold; color: white; }
+        .sub-header-style { font-size: 0.9rem; color: var(--primary); letter-spacing: 2px; margin-bottom: 30px; opacity: 0.8; display: block; }
 
-        @media (max-width: 768px) {
+        /* Drawers & Dossiers */
+        .drawer { background: var(--glass); border: 1px solid rgba(108, 92, 231, 0.3); margin-bottom: 15px; border-radius: 8px; overflow: hidden; }
+        summary { padding: 18px; cursor: pointer; font-weight: bold; display: flex; justify-content: space-between; background: rgba(108, 92, 231, 0.15); transition: 0.3s; }
+        summary:hover { background: rgba(108, 92, 231, 0.25); }
+        
+        .dossier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 20px; padding: 25px; }
+        .char-card { 
+            background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.05);
+            padding: 20px; border-radius: 10px; text-align: center; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .char-card:hover { border-color: var(--accent); transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+        .char-img { width: 90px; height: 90px; object-fit: contain; margin-bottom: 12px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5)); }
+        
+        .char-name { font-size: 0.8rem; font-weight: bold; margin-bottom: 6px; }
+        .char-desc { font-size: 0.65rem; opacity: 0.7; line-height: 1.4; }
+
+        .footer-bar { margin-top: auto; background: var(--accent); color: white; font-size: 0.7rem; display: flex; justify-content: space-between; padding: 12px 30px; letter-spacing: 1px; }
+
+        @media (max-width: 900px) {
             #custom-cursor { display: none; }
             * { cursor: auto !important; }
-            .app-container { flex-direction: column; }
-            .dossier-grid { grid-template-columns: 1fr; }
+            .app-container { flex-direction: column; align-items: center; }
+            .profile-sidebar { max-width: 100%; width: 100%; }
+            .dossier-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
@@ -144,7 +163,7 @@
 
     <div class="ticker-wrap">
         <div class="ticker-move">
-            SYSTEM STATUS: STABLE • NEW PUPPETS JOINING THE THEATER • ACT IV: THE ETERNAL NIGHT • DIRECTOR MOON IS WATCHING • ALL SCRIPTS SYNCHRONIZED •
+            SYSTEM STATUS: STABLE • NEW PUPPETS JOINING THE THEATER • ACT IV: THE ETERNAL NIGHT • DIRECTOR MOON IS WATCHING • ALL SCRIPTS SYNCHRONIZED • DATA ARCHIVE UPDATED • 
         </div>
     </div>
 
@@ -153,19 +172,19 @@
             <div class="glass-card">
                 <img src="sm.png" alt="Director Moon" class="avatar">
                 <h1>DIRECTOR MOON</h1>
-                <p class="badge">ID: 971381693971824700</p>
+                <p class="badge">Sovereign ID: 971381693971824700</p>
                 
                 <div class="terminal-box">
-                    <div id="typewriter">> Initializing Archive...</div>
+                    <div id="typewriter">> Initializing theater...</div>
                 </div>
 
                 <audio id="theater-music" loop><source src="theme.mp3" type="audio/mpeg"></audio>
                 <button class="audio-control" onclick="toggleMusic()" id="music-btn">▶ PLAY ATMOSPHERE</button>
 
-                <div class="social-grid" style="margin-top:20px; display:flex; gap:15px; justify-content:center;">
-                    <a href="https://discord.gg/trJb9jheUS" target="_blank"><img src="discord.png" width="35"></a>
-                    <a href="https://youtube.com/@unknown-d8j4m?si=hz3em3P6DgcxcS1t" target="_blank"><img src="youtube.png" width="35"></a>
-                    <a href="https://www.tiktok.com/@dirmoonofc?_r=1&_t=ZG-95DGepO4hxg" target="_blank"><img src="tiktok.png" width="35"></a>
+                <div class="social-grid">
+                    <a href="https://discord.gg/trJb9jheUS" target="_blank"><img src="discord.png" alt="Discord"></a>
+                    <a href="https://youtube.com/@unknown-d8j4m?si=hz3em3P6DgcxcS1t" target="_blank"><img src="youtube.png" alt="YouTube"></a>
+                    <a href="https://www.tiktok.com/@dirmoonofc?_r=1&_t=ZG-95DGepO4hxg" target="_blank"><img src="tiktok.png" alt="TikTok"></a>
                 </div>
             </div>
         </aside>
@@ -174,94 +193,95 @@
             <div class="bot-spotlight">
                 <img src="shadowmilkbot.png" class="bot-avatar-small">
                 <div style="flex-grow:1">
-                    <div style="font-weight:bold; font-size:1.1rem;">SHADOW MILK BOT</div>
-                    <div style="font-size:0.65rem; color:#55efc4">● SYSTEM ONLINE</div>
+                    <div style="font-weight:bold; font-size:1.3rem; color: white;">SHADOW MILK BOT</div>
+                    <div style="font-size:0.7rem; color:#55efc4; letter-spacing: 1px;">● SYSTEM STATUS: ONLINE</div>
                 </div>
-                <a href="https://discord.com/oauth2/authorize?client_id=1461867308065488967" target="_blank" class="invite-btn">INVITE BOT</a>
+                <a href="https://discord.com/oauth2/authorize?client_id=1461867308065488967" target="_blank" class="invite-btn">INVITE TO SERVER</a>
             </div>
 
             <h2 class="main-highlight-title">ORIGIN OF MY CREATION AND OTHER CHARACTERS</h2>
             <span class="sub-header-style">THE ETERNAL ARCHIVE</span>
 
             <details class="drawer">
-                <summary>ARCHIVE: THE ANCIENT HEROES</summary>
+                <summary>ARCHIVE: THE ANCIENT HEROES <span>[+]</span></summary>
                 <div class="dossier-grid">
                     <div class="char-card">
                         <img src="purevanilla.png" class="char-img">
-                        <div class="ancient-text" style="font-weight:bold; font-size:0.75rem;">PURE VANILLA</div>
-                        <p style="font-size:0.6rem; opacity:0.7;">Founder of the Vanilla Kingdom. Bearer of Enlightenment.</p>
+                        <div class="char-name ancient-text">PURE VANILLA</div>
+                        <p class="char-desc">The first Ancient Hero and bearer of the Enlightenment Soul Jam.</p>
                     </div>
                     <div class="char-card">
                         <img src="hollyberry.png" class="char-img">
-                        <div class="ancient-text" style="font-weight:bold; font-size:0.75rem;">HOLLYBERRY</div>
-                        <p style="font-size:0.6rem; opacity:0.7;">Founder of the Hollyberry Kingdom. Bearer of Passion.</p>
+                        <div class="char-name ancient-text">HOLLYBERRY</div>
+                        <p class="char-desc">Fearless founder of the Hollyberry Kingdom. Bearer of Passion.</p>
                     </div>
                     <div class="char-card">
                         <img src="darkcacao.png" class="char-img">
-                        <div class="ancient-text" style="font-weight:bold; font-size:0.75rem;">DARK CACAO</div>
-                        <p style="font-size:0.6rem; opacity:0.7;">King of the Snowy Citadel. Bearer of Resolution.</p>
+                        <div class="char-name ancient-text">DARK CACAO</div>
+                        <p class="char-desc">Sovereign of the Snowy Citadel. Bearer of Resolution.</p>
                     </div>
                     <div class="char-card">
                         <img src="goldencheese.png" class="char-img">
-                        <div class="ancient-text" style="font-weight:bold; font-size:0.75rem;">GOLDEN CHEESE</div>
-                        <p style="font-size:0.6rem; opacity:0.7;">Sovereign of the Golden City. Bearer of Abundance.</p>
+                        <div class="char-name ancient-text">GOLDEN CHEESE</div>
+                        <p class="char-desc">Ruler of the Golden City. Bearer of Abundance.</p>
                     </div>
                     <div class="char-card">
                         <img src="whitelily.png" class="char-img">
-                        <div class="ancient-text" style="font-weight:bold; font-size:0.75rem;">WHITE LILY</div>
-                        <p style="font-size:0.6rem; opacity:0.7;">A seeker of truth. Bearer of Liberty.</p>
+                        <div class="char-name ancient-text">WHITE LILY</div>
+                        <p class="char-desc">Seeker of forbidden truths. Bearer of Liberty.</p>
                     </div>
                 </div>
             </details>
 
             <details class="drawer" open>
-                <summary>ARCHIVE: THE BEAST YEAST</summary>
+                <summary>ARCHIVE: THE BEAST YEAST <span>[+]</span></summary>
                 <div class="dossier-grid">
                     <div class="char-card">
                         <img src="shadowmilk.png" class="char-img">
-                        <div class="beast-text" style="font-weight:bold; font-size:0.75rem;">SHADOW MILK</div>
-                        <p style="font-size:0.6rem; opacity:0.7;">The Beast of Deceit. Master of the Theater.</p>
+                        <div class="char-name beast-text">SHADOW MILK</div>
+                        <p class="char-desc">Beast of Deceit. Master of the Theater who pulls the strings.</p>
                     </div>
                     <div class="char-card">
                         <img src="mysticflour.png" class="char-img">
-                        <div class="beast-text" style="font-weight:bold; font-size:0.75rem;">MYSTIC FLOUR</div>
-                        <p style="font-size:0.6rem; opacity:0.7;">The Beast of Apathy. Erasing desire.</p>
+                        <div class="char-name beast-text">MYSTIC FLOUR</div>
+                        <p class="char-desc">Beast of Apathy. Her touch leaves only silence and dust.</p>
                     </div>
                     <div class="char-card">
                         <img src="burningspice.png" class="char-img">
-                        <div class="beast-text" style="font-weight:bold; font-size:0.75rem;">BURNING SPICE</div>
-                        <p style="font-size:0.6rem; opacity:0.7;">The Beast of Destruction. Unending rage.</p>
+                        <div class="char-name beast-text">BURNING SPICE</div>
+                        <p class="char-desc">Beast of Destruction. A colossal force of uncontrollable rage.</p>
                     </div>
                     <div class="char-card">
                         <img src="eternalsugar.png" class="char-img">
-                        <div class="beast-text" style="font-weight:bold; font-size:0.75rem;">ETERNAL SUGAR</div>
-                        <p style="font-size:0.6rem; opacity:0.7;">The Beast of Indulgence. Trapped in a dream.</p>
+                        <div class="char-name beast-text">ETERNAL SUGAR</div>
+                        <p class="char-desc">Beast of Indulgence. Traps souls in a sweet, eternal dream.</p>
                     </div>
                     <div class="char-card">
                         <img src="silentsalt.png" class="char-img">
-                        <div class="beast-text" style="font-weight:bold; font-size:0.75rem;">SILENT SALT</div>
-                        <p style="font-size:0.6rem; opacity:0.7;">The Beast of Despair. Erosion of spirit.</p>
+                        <div class="char-name beast-text">SILENT SALT</div>
+                        <p class="char-desc">Beast of Despair. Erosion of spirit until only salt remains.</p>
                     </div>
                 </div>
             </details>
 
-            <h2 class="main-highlight-title" style="margin-top:30px;">GOVERNANCE & PROTOCOLS</h2>
+            <h2 class="main-highlight-title" style="margin-top:40px;">GOVERNANCE & PROTOCOLS</h2>
+            <span class="sub-header-style">LAWS OF THE THEATER</span>
+
             <details class="drawer">
-                <summary>THE THEATER RULES</summary>
-                <div style="padding:20px;">
-                    <ul class="rule-list">
-                        <li><strong>I. Respect:</strong> No harassment or hate speech.</li>
-                        <li><strong>II. Integrity:</strong> No spamming or raiding.</li>
-                        <li><strong>III. Content:</strong> Keep the theater SFW.</li>
-                    </ul>
+                <summary>THEATER PROTOCOLS (RULES)</summary>
+                <div style="padding:20px; font-size:0.8rem;">
+                    <p><strong>I. MUTUAL RESPECT:</strong> Harassment or hate speech results in exile.</p>
+                    <p><strong>II. SYSTEM INTEGRITY:</strong> No spamming or abuse of bot commands.</p>
+                    <p><strong>III. SFW PERFORMANCE:</strong> Explicit content is strictly forbidden.</p>
                 </div>
             </details>
 
             <details class="drawer">
                 <summary>TERMS & PRIVACY</summary>
-                <div style="padding:20px; font-size:0.75rem;">
-                    <p><strong>Data:</strong> We store Discord IDs and economy logs for bot functionality.</p>
-                    <p><strong>Rights:</strong> You may request data deletion via support.</p>
+                <div style="padding:20px; font-size:0.8rem;">
+                    <p><strong>DATA:</strong> We store Discord IDs and economy balances only.</p>
+                    <p><strong>SECURITY:</strong> Your dossier is kept in secure archives.</p>
+                    <p><strong>RIGHTS:</strong> Use support commands to request data deletion.</p>
                 </div>
             </details>
         </section>
@@ -269,7 +289,7 @@
 
     <footer class="footer-bar">
         <span>© 2026 SHADOW MILK PROJECT</span>
-        <span>STATUS: SYSTEM STABLE</span>
+        <span>SYSTEM STABLE // CURTAINS OPEN</span>
     </footer>
 
     <script>
@@ -282,17 +302,30 @@
         const music = document.getElementById('theater-music');
         const musicBtn = document.getElementById('music-btn');
         function toggleMusic() {
-            if (music.paused) { music.play(); musicBtn.innerText = "|| PAUSE ATMOSPHERE"; }
-            else { music.pause(); musicBtn.innerText = "▶ PLAY ATMOSPHERE"; }
+            if (music.paused) { 
+                music.play(); 
+                musicBtn.innerText = "|| PAUSE ATMOSPHERE"; 
+            } else { 
+                music.pause(); 
+                musicBtn.innerText = "▶ PLAY ATMOSPHERE"; 
+            }
         }
 
-        const logs = ["> Fetching Archive...", "> Analyzing ID 97138...", "> Deploying Commands...", "> Status: ACTIVE"];
+        const logs = [
+            "> Accessing Archive...", 
+            "> Director ID Verified.", 
+            "> ACT IV: Deployment...", 
+            "> Status: DECEPTION ACTIVE"
+        ];
         let logIndex = 0;
         function updateLogs() {
-            document.getElementById('typewriter').innerText = logs[logIndex];
-            logIndex = (logIndex + 1) % logs.length;
+            const typewriter = document.getElementById('typewriter');
+            if(typewriter) {
+                typewriter.innerText = logs[logIndex];
+                logIndex = (logIndex + 1) % logs.length;
+            }
         }
-        setInterval(updateLogs, 3500);
+        setInterval(updateLogs, 4000);
     </script>
 </body>
 </html>
