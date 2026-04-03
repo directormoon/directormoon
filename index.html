@@ -26,19 +26,14 @@
             position: fixed;
             pointer-events: none;
             z-index: 9999;
-            transition: transform 0.1s ease;
             box-shadow: 0 0 10px var(--accent);
             transform: translate(-50%, -50%);
         }
 
-        /* CUSTOM SCROLLBAR */
+        /* SCROLLBAR */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { 
-            background: var(--accent); 
-            border-radius: 10px;
-            border: 2px solid var(--bg);
-        }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; border: 2px solid var(--bg); }
 
         body {
             background-color: var(--bg);
@@ -56,12 +51,11 @@
             opacity: 0.15; z-index: -1;
         }
 
-        /* News Ticker */
+        /* Ticker */
         .ticker-wrap {
             width: 100%; background: rgba(108, 92, 231, 0.2);
             border-bottom: 1px solid var(--accent);
             overflow: hidden; white-space: nowrap; padding: 8px 0;
-            z-index: 10;
         }
         .ticker-move {
             display: inline-block; animation: ticker 15s linear infinite;
@@ -76,7 +70,7 @@
             justify-content: center;
         }
 
-        /* Sidebar Styles */
+        /* Sidebar */
         .profile-sidebar { flex: 1 1 320px; max-width: 380px; }
         .glass-card {
             background: var(--glass); border: 1px solid var(--accent);
@@ -87,12 +81,10 @@
         h1 { font-size: 1.5rem; margin: 15px 0 5px; letter-spacing: 2px; color: white; }
         .badge { font-size: 0.65rem; color: var(--primary); background: rgba(108, 92, 231, 0.2); padding: 5px 10px; border-radius: 3px; display: inline-block; }
         
-        /* Terminal & Audio */
         .terminal-box {
             margin-top: 20px; background: var(--terminal-bg);
             border: 1px solid rgba(162, 155, 254, 0.3); border-radius: 4px;
-            padding: 12px; text-align: left; font-size: 0.65rem;
-            color: var(--primary); min-height: 60px;
+            padding: 12px; text-align: left; font-size: 0.65rem; color: var(--primary); min-height: 60px;
         }
         .audio-control {
             margin-top: 15px; background: rgba(162, 155, 254, 0.1);
@@ -101,7 +93,7 @@
             cursor: pointer; transition: 0.3s; width: 100%;
             font-family: 'JetBrains Mono', monospace;
         }
-        .audio-control:hover { background: var(--accent); color: white; box-shadow: 0 0 10px var(--accent); }
+        .audio-control:hover { background: var(--accent); color: white; }
 
         /* Bot Spotlight */
         .bot-spotlight {
@@ -116,7 +108,6 @@
             padding: 10px 20px; border-radius: 4px; font-size: 0.8rem;
             font-weight: bold; transition: 0.3s;
         }
-        .invite-btn:hover { background: var(--primary); transform: scale(1.05); }
 
         /* Content Area */
         .content-area { flex: 2 1 600px; }
@@ -129,18 +120,14 @@
         .dossier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 20px; }
         .char-card { 
             background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05);
-            padding: 15px; border-radius: 6px; text-align: center;
-            transition: 0.3s ease;
+            padding: 15px; border-radius: 6px; text-align: center; transition: 0.3s;
         }
-        .char-card:hover { 
-            border-color: var(--accent); 
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
-        }
-        .char-img { width: 85px; height: 85px; object-fit: contain; margin-bottom: 10px; }
+        .char-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .char-img { width: 80px; height: 80px; object-fit: contain; margin-bottom: 10px; }
         .ancient-text { color: var(--ancient); }
         .beast-text { color: var(--beast); }
 
+        .rule-list { padding-left: 18px; list-style-type: square; font-size: 0.8rem; }
         .footer-bar { margin-top: auto; background: var(--accent); color: white; font-size: 0.6rem; display: flex; justify-content: space-between; padding: 10px 20px; }
 
         @media (max-width: 768px) {
@@ -172,15 +159,13 @@
                     <div id="typewriter">> Initializing Archive...</div>
                 </div>
 
-                <audio id="theater-music" loop>
-                    <source src="theme.mp3" type="audio/mpeg">
-                </audio>
+                <audio id="theater-music" loop><source src="theme.mp3" type="audio/mpeg"></audio>
                 <button class="audio-control" onclick="toggleMusic()" id="music-btn">▶ PLAY ATMOSPHERE</button>
 
                 <div class="social-grid" style="margin-top:20px; display:flex; gap:15px; justify-content:center;">
-                    <a href="https://discord.gg/trJb9jheUS" target="_blank"><img src="discord.png" width="40"></a>
-                    <a href="https://youtube.com/@unknown-d8j4m?si=hz3em3P6DgcxcS1t" target="_blank"><img src="youtube.png" width="40"></a>
-                    <a href="https://www.tiktok.com/@dirmoonofc?_r=1&_t=ZG-95DGepO4hxg" target="_blank"><img src="tiktok.png" width="40"></a>
+                    <a href="https://discord.gg/trJb9jheUS" target="_blank"><img src="discord.png" width="35"></a>
+                    <a href="https://youtube.com/@unknown-d8j4m?si=hz3em3P6DgcxcS1t" target="_blank"><img src="youtube.png" width="35"></a>
+                    <a href="https://www.tiktok.com/@dirmoonofc?_r=1&_t=ZG-95DGepO4hxg" target="_blank"><img src="tiktok.png" width="35"></a>
                 </div>
             </div>
         </aside>
@@ -198,45 +183,85 @@
             <h2 class="main-highlight-title">ORIGIN OF MY CREATION AND OTHER CHARACTERS</h2>
             <span class="sub-header-style">THE ETERNAL ARCHIVE</span>
 
-            <details class="drawer" open>
+            <details class="drawer">
                 <summary>ARCHIVE: THE ANCIENT HEROES</summary>
                 <div class="dossier-grid">
                     <div class="char-card">
                         <img src="purevanilla.png" class="char-img">
-                        <div class="ancient-text" style="font-weight:bold; font-size:0.8rem;">PURE VANILLA</div>
-                        <p style="font-size:0.6rem; opacity:0.7;">Bearer of Enlightenment Soul Jam.</p>
+                        <div class="ancient-text" style="font-weight:bold; font-size:0.75rem;">PURE VANILLA</div>
+                        <p style="font-size:0.6rem; opacity:0.7;">Founder of the Vanilla Kingdom. Bearer of Enlightenment.</p>
+                    </div>
+                    <div class="char-card">
+                        <img src="hollyberry.png" class="char-img">
+                        <div class="ancient-text" style="font-weight:bold; font-size:0.75rem;">HOLLYBERRY</div>
+                        <p style="font-size:0.6rem; opacity:0.7;">Founder of the Hollyberry Kingdom. Bearer of Passion.</p>
                     </div>
                     <div class="char-card">
                         <img src="darkcacao.png" class="char-img">
-                        <div class="ancient-text" style="font-weight:bold; font-size:0.8rem;">DARK CACAO</div>
-                        <p style="font-size:0.6rem; opacity:0.7;">Bearer of Resolution Soul Jam.</p>
+                        <div class="ancient-text" style="font-weight:bold; font-size:0.75rem;">DARK CACAO</div>
+                        <p style="font-size:0.6rem; opacity:0.7;">King of the Snowy Citadel. Bearer of Resolution.</p>
+                    </div>
+                    <div class="char-card">
+                        <img src="goldencheese.png" class="char-img">
+                        <div class="ancient-text" style="font-weight:bold; font-size:0.75rem;">GOLDEN CHEESE</div>
+                        <p style="font-size:0.6rem; opacity:0.7;">Sovereign of the Golden City. Bearer of Abundance.</p>
+                    </div>
+                    <div class="char-card">
+                        <img src="whitelily.png" class="char-img">
+                        <div class="ancient-text" style="font-weight:bold; font-size:0.75rem;">WHITE LILY</div>
+                        <p style="font-size:0.6rem; opacity:0.7;">A seeker of truth. Bearer of Liberty.</p>
                     </div>
                 </div>
             </details>
 
-            <details class="drawer">
+            <details class="drawer" open>
                 <summary>ARCHIVE: THE BEAST YEAST</summary>
                 <div class="dossier-grid">
                     <div class="char-card">
                         <img src="shadowmilk.png" class="char-img">
-                        <div class="beast-text" style="font-weight:bold; font-size:0.8rem;">SHADOW MILK</div>
-                        <p style="font-size:0.6rem; opacity:0.7;">The Beast of Deceit.</p>
+                        <div class="beast-text" style="font-weight:bold; font-size:0.75rem;">SHADOW MILK</div>
+                        <p style="font-size:0.6rem; opacity:0.7;">The Beast of Deceit. Master of the Theater.</p>
                     </div>
                     <div class="char-card">
                         <img src="mysticflour.png" class="char-img">
-                        <div class="beast-text" style="font-weight:bold; font-size:0.8rem;">MYSTIC FLOUR</div>
-                        <p style="font-size:0.6rem; opacity:0.7;">The Beast of Apathy.</p>
+                        <div class="beast-text" style="font-weight:bold; font-size:0.75rem;">MYSTIC FLOUR</div>
+                        <p style="font-size:0.6rem; opacity:0.7;">The Beast of Apathy. Erasing desire.</p>
+                    </div>
+                    <div class="char-card">
+                        <img src="burningspice.png" class="char-img">
+                        <div class="beast-text" style="font-weight:bold; font-size:0.75rem;">BURNING SPICE</div>
+                        <p style="font-size:0.6rem; opacity:0.7;">The Beast of Destruction. Unending rage.</p>
+                    </div>
+                    <div class="char-card">
+                        <img src="eternalsugar.png" class="char-img">
+                        <div class="beast-text" style="font-weight:bold; font-size:0.75rem;">ETERNAL SUGAR</div>
+                        <p style="font-size:0.6rem; opacity:0.7;">The Beast of Indulgence. Trapped in a dream.</p>
+                    </div>
+                    <div class="char-card">
+                        <img src="silentsalt.png" class="char-img">
+                        <div class="beast-text" style="font-weight:bold; font-size:0.75rem;">SILENT SALT</div>
+                        <p style="font-size:0.6rem; opacity:0.7;">The Beast of Despair. Erosion of spirit.</p>
                     </div>
                 </div>
             </details>
 
-            <h2 class="main-highlight-title" style="margin-top:30px;">THEATER PROTOCOLS</h2>
+            <h2 class="main-highlight-title" style="margin-top:30px;">GOVERNANCE & PROTOCOLS</h2>
             <details class="drawer">
-                <summary>RULES & PRIVACY</summary>
-                <div style="padding:20px; font-size:0.75rem; line-height:1.6;">
-                    <p><strong>1. Respect:</strong> Treat all puppets with dignity.</p>
-                    <p><strong>2. Data:</strong> We only store Discord IDs for economy functions.</p>
-                    <p><strong>3. Conduct:</strong> NSFW or Raiding is strictly prohibited.</p>
+                <summary>THE THEATER RULES</summary>
+                <div style="padding:20px;">
+                    <ul class="rule-list">
+                        <li><strong>I. Respect:</strong> No harassment or hate speech.</li>
+                        <li><strong>II. Integrity:</strong> No spamming or raiding.</li>
+                        <li><strong>III. Content:</strong> Keep the theater SFW.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="drawer">
+                <summary>TERMS & PRIVACY</summary>
+                <div style="padding:20px; font-size:0.75rem;">
+                    <p><strong>Data:</strong> We store Discord IDs and economy logs for bot functionality.</p>
+                    <p><strong>Rights:</strong> You may request data deletion via support.</p>
                 </div>
             </details>
         </section>
@@ -244,38 +269,24 @@
 
     <footer class="footer-bar">
         <span>© 2026 SHADOW MILK PROJECT</span>
-        <span>CURTAINS OPEN</span>
+        <span>STATUS: SYSTEM STABLE</span>
     </footer>
 
     <script>
-        // Cursor Logic
         const cursor = document.getElementById('custom-cursor');
         document.addEventListener('mousemove', e => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
         });
 
-        // Audio Logic
         const music = document.getElementById('theater-music');
         const musicBtn = document.getElementById('music-btn');
         function toggleMusic() {
-            if (music.paused) {
-                music.play();
-                musicBtn.innerText = "|| PAUSE ATMOSPHERE";
-            } else {
-                music.pause();
-                musicBtn.innerText = "▶ PLAY ATMOSPHERE";
-            }
+            if (music.paused) { music.play(); musicBtn.innerText = "|| PAUSE ATMOSPHERE"; }
+            else { music.pause(); musicBtn.innerText = "▶ PLAY ATMOSPHERE"; }
         }
 
-        // Terminal Logic
-        const logs = [
-            "> Fetching Archive Data...",
-            "> Analyzing Director Moon...",
-            "> Connection: SECURE",
-            "> Deploying Commands...",
-            "> Status: DECEPTION ACTIVE"
-        ];
+        const logs = ["> Fetching Archive...", "> Analyzing ID 97138...", "> Deploying Commands...", "> Status: ACTIVE"];
         let logIndex = 0;
         function updateLogs() {
             document.getElementById('typewriter').innerText = logs[logIndex];
@@ -284,4 +295,4 @@
         setInterval(updateLogs, 3500);
     </script>
 </body>
-    </html>
+</html>
