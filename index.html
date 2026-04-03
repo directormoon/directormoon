@@ -98,7 +98,7 @@
         h1 { font-size: 1.5rem; margin: 15px 0 5px; letter-spacing: 2px; color: white; }
         .badge { font-size: 0.65rem; color: var(--primary); background: rgba(108, 92, 231, 0.2); padding: 5px 10px; border-radius: 3px; display: inline-block; }
         
-        /* Bot Spotlight Card (CORRIGIDO PARA MESMA OPACIDADE) */
+        /* Bot Spotlight Card (Opacidade Corrigida) */
         .bot-spotlight {
             background: var(--glass);
             border: 1px solid var(--accent);
@@ -181,8 +181,9 @@
             width: 100%;
             font-family: 'JetBrains Mono', monospace;
             font-weight: bold;
+            text-transform: uppercase;
         }
-        .audio-control:hover { background: var(--accent); color: white; }
+        .audio-control:hover { background: var(--accent); color: white; box-shadow: 0 0 10px var(--accent); }
 
         /* Socials */
         .social-grid { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 20px; }
@@ -216,8 +217,8 @@
             transition: 0.3s;
         }
         .char-card:hover { border-color: var(--accent); transform: scale(1.02); }
-        .char-img { width: 80px; height: 80px; object-fit: contain; margin-bottom: 10px; }
-        .char-name { font-size: 0.75rem; font-weight: bold; margin-bottom: 6px; text-transform: uppercase; }
+        .char-img { width: 80px; height: 80px; object-fit: contain; margin-bottom: 12px; }
+        .char-name { font-size: 0.75rem; font-weight: bold; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
         .char-desc { font-size: 0.65rem; opacity: 0.7; line-height: 1.4; }
         .ancient-text { color: var(--ancient); }
         .beast-text { color: var(--beast); }
@@ -254,7 +255,7 @@
                     <a href="https://www.roblox.com/users/1533939692/profile" target="_blank" class="social-icon rounded-square"><img src="roblox.png" alt="Roblox"></a>
                 </div>
 
-                <audio id="theater-music" loop autoplay>
+                <audio id="theater-music" loop preload="auto">
                     <source src="theme.mp3" type="audio/mpeg">
                 </audio>
                 <button class="audio-control" onclick="toggleMusic()" id="music-btn">|| PAUSE ATMOSPHERE</button>
@@ -306,7 +307,7 @@
                         <div class="char-card">
                             <img src="goldencheese.png" class="char-img">
                             <span class="char-name ancient-text">Golden Cheese</span>
-                            <span class="char-desc">Sovereign of the Golden City. Bearer of the Abundance Soul Jam, ruling the desert with radiance.</span>
+                            <span class="char-desc">Sovereign of the Golden City. Bearer of the Abundance Soul Jam, ruling the desert with absolute radiance.</span>
                         </div>
                         <div class="char-card">
                             <img src="whitelily.png" class="char-img">
@@ -399,7 +400,6 @@
         const music = document.getElementById('theater-music');
         const musicBtn = document.getElementById('music-btn');
 
-        // Função para alternar música
         function toggleMusic() {
             if (music.paused) {
                 music.play();
@@ -410,20 +410,32 @@
             }
         }
 
-        // Tenta tocar automaticamente quando o user interage com a página (devido às regras do Chrome/Edge)
-        window.addEventListener('click', () => {
-            if (music.paused) {
-                music.play();
+        // TÉCNICA DE FORÇAR AUTOPLAY:
+        // Os browsers bloqueiam o som automático, então tentamos tocar
+        // assim que o utilizador clica em QUALQUER PARTE da página.
+        function forceAutoplay() {
+            music.play().then(() => {
+                // Se o autoplay funcionar, atualiza o botão
                 musicBtn.innerHTML = "|| PAUSE ATMOSPHERE";
-            }
-        }, { once: true });
+                // Remove os eventos para não disparar mais que uma vez
+                window.removeEventListener('click', forceAutoplay);
+                window.removeEventListener('scroll', forceAutoplay);
+                window.removeEventListener('touchstart', forceAutoplay);
+            }).catch((error) => {
+                // Autoplay ainda bloqueado pelo browser
+                console.log("Waiting for interaction to begin the play...");
+            });
+        }
 
-        // Verifica se o autoplay funcionou no load
-        window.addEventListener('load', () => {
-            if (!music.paused) {
-                musicBtn.innerHTML = "|| PAUSE ATMOSPHERE";
-            }
-        });
+        // Adiciona ouvintes para "capturar" a primeira interação do user
+        window.addEventListener('click', forceAutoplay);
+        window.addEventListener('scroll', forceAutoplay);
+        window.addEventListener('touchstart', forceAutoplay);
+
+        // Tenta tocar imediatamente no load (caso o user já tenha visitado antes)
+        window.onload = () => {
+            forceAutoplay();
+        };
     </script>
 </body>
-    </html>
+</html>
