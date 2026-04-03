@@ -98,6 +98,44 @@
         h1 { font-size: 1.5rem; margin: 15px 0 5px; letter-spacing: 2px; color: white; }
         .badge { font-size: 0.65rem; color: var(--primary); background: rgba(108, 92, 231, 0.2); padding: 5px 10px; border-radius: 3px; display: inline-block; }
         
+        /* Bot Spotlight Card (NEW) */
+        .bot-spotlight {
+            background: linear-gradient(90deg, rgba(108, 92, 231, 0.1), rgba(0,0,0,0.5));
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .bot-avatar-small {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+        }
+        .bot-info { flex-grow: 1; }
+        .bot-name { font-size: 1.2rem; font-weight: bold; color: white; margin-bottom: 5px; }
+        .bot-status { font-size: 0.7rem; color: #55efc4; text-transform: uppercase; letter-spacing: 1px; }
+        .invite-btn {
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+        .invite-btn:hover {
+            background: transparent;
+            border-color: var(--accent);
+            color: var(--primary);
+            box-shadow: 0 0 15px var(--accent);
+        }
+
         /* Puppet Master Terminal */
         .terminal-box {
             margin-top: 25px;
@@ -164,15 +202,12 @@
         .ancient-text { color: var(--ancient); }
         .beast-text { color: var(--beast); }
 
-        .rule-list { padding-left: 18px; margin: 10px 0; list-style-type: square; }
-        .rule-list li { margin-bottom: 8px; }
-        strong { color: var(--primary); }
-
         .footer-bar { margin-top: auto; background: var(--accent); color: white; font-size: 0.6rem; display: flex; justify-content: space-between; padding: 10px 20px; }
 
         @media (max-width: 768px) {
             .app-container { flex-direction: column; }
             .dossier-grid { grid-template-columns: 1fr; }
+            .bot-spotlight { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -209,9 +244,19 @@
         </aside>
 
         <section class="content-area">
+            <div class="bot-spotlight">
+                <img src="shadowmilkbot.png" alt="Shadow Milk Bot" class="bot-avatar-small">
+                <div class="bot-info">
+                    <div class="bot-status">● System Active</div>
+                    <div class="bot-name">SHADOW MILK BOT</div>
+                    <p style="font-size: 0.75rem; opacity: 0.8; margin: 5px 0 10px;">Bring the Eternal Theater to your server.</p>
+                </div>
+                <a href="https://discord.com/oauth2/authorize?client_id=1461867308065488967" target="_blank" class="invite-btn">INVITE TO THEATER</a>
+            </div>
+
             <header>
                 <h2 class="main-highlight-title">ORIGIN OF MY CREATION AND OTHER CHARACTERS</h2>
-                <span class="sub-header-style">SHADOW MILK BOT</span>
+                <span class="sub-header-style">ARCHIVE SYSTEM</span>
             </header>
 
             <details class="drawer">
