@@ -422,17 +422,14 @@
                 window.removeEventListener('scroll', forceAutoplay);
                 window.removeEventListener('touchstart', forceAutoplay);
             }).catch((error) => {
-                // Autoplay ainda bloqueado pelo browser
                 console.log("Waiting for interaction to begin the play...");
             });
         }
 
-        // Adiciona ouvintes para "capturar" a primeira interação do user
         window.addEventListener('click', forceAutoplay);
         window.addEventListener('scroll', forceAutoplay);
         window.addEventListener('touchstart', forceAutoplay);
 
-        // Tenta tocar imediatamente no load (caso o user já tenha visitado antes)
         window.onload = () => {
             forceAutoplay();
         };
